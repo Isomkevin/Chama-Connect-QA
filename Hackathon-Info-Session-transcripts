@@ -1,0 +1,232 @@
+
+Keywords:
+Hackathon, Chamaconnect, bug bounty, technical proposal, innovation, FinTech, documentation, GitHub, technical depth, fraud prevention, automated records, complex calculations, usability, performance, competition.
+
+Speakers (by percentage of participation):
+Antonio (39%), Carl (24%), Kimutai (17%), ERICK (12%), Phil (4%), Francis (3%), Speaker 1 (1%), Speaker 2 (<1%)
+
+Highlights & Key Details:
+
+Antonio welcomed everyone to the Hackathon Info Session, emphasizing both the opportunity to contribute to Chamaconnect and the value of engaging with innovation, blockchain, and AI within the FinTech space. The event is organized by We Are Limited together with Salamander, aiming to give the community a chance to test, provide feedback, and find bugs before product launch. Participation is expected to not only help improve the application but also showcase individual skills and innovation.
+
+ERICK, the project manager, highlighted the importance of thoroughly understanding the shared documentation, as submissions will be evaluated based on clarity and impact. Participation in the hackathon equates to becoming part of the Chamaconnect system. Clear, objective, and well-documented feedback is key.
+
+Carl, from the technical team, underlined the focus areas:
+- Technical depth in bug identification and proposals
+- Innovation and impact of suggested features or enhancements
+- Solutions should address real problems (e.g., fraud prevention, automated records, complex calculations)
+- Submissions must work as described and include complete documentation
+- Technical proposals should clearly explain both the problem and the rationale behind the solution
+
+Technical Stack & Innovation:
+- There is no restriction on the tech stack; choose technologies that best fit your proposed solution, but avoid unnecessary complexity.
+- Innovations should be FinTech-related and directly improve or extend Chamaconnect for chamas, SACCOs, or group/stable banking.
+- Primary objective: find and document bugs as clearly as possible, then propose feasible technical solutions.
+
+Submission Guidelines:
+- This is essentially a bug bounty — find, document, and suggest fixes for as many relevant issues as you can.
+- Use a format similar to GitHub issues:
+  1. Explain what you attempted
+  2. Specify your environment (e.g., device, OS)
+  3. List clear, step-by-step instructions to reproduce the bug
+  4. Provide screenshots when relevant
+  5. Suggest possible causes and solutions
+- Proposals should be submitted as a single PDF, with bugs as the primary section and any innovation/feature suggestions as an optional second section.
+- You must set up an account, interact with the platform, and clearly identify and address usability, performance, or functionality issues.
+- Submissions should include:
+  - Problem statement & root cause
+  - Proposed solution & technical approach (with public GitHub link if code is provided)
+  - Expected impact
+  - A clean, well-structured repo with comprehensive documentation (README) for any code submissions
+
+Participation & Questions:
+- Participation is individual (no teams); each participant should create their own Chamaconnect account for testing.
+- The more issues/features you identify and address, the stronger your submission.
+- Judges will assess submissions based on the quantity and quality of identified bugs, clarity of documentation, and effectiveness of proposed solutions.
+- If you have already worked on solutions, make sure to follow the new structured format for submission.
+- Support is available via WhatsApp and support@temaconnect.io for any clarifications.
+
+Timeline:
+- All submissions must be made by Sunday, 11:59pm, as stated in the official communications.
+- Use the time effectively to thoroughly test, document, and propose your solutions.
+
+The session closed with a Q&A, reiterating openness to further questions up to the deadline, and encouraging concise, well-structured, and impactful proposals.
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Here’s a complete, ready‑to‑use structure you can follow to finish your submission and align very closely with what the organizers described in the transcript.
+
+You can treat this as the template for your PDF and also a guide for how to structure your GitHub repo.
+
+1. Cover Page (PDF)
+Include:
+
+Title: Chama Connect QA/Bug Bounty #1 — [Your Full Name]
+Participant:
+Name: [Your Name]
+Email: [Your Email]
+Hackathon / Bug Bounty: CHAMACONNECT Virtual Hackathon (Bug Bounty)
+Date of Submission: [Sunday, date, 11:59 PM or earlier]
+2. Table of Contents (Optional but Professional)
+Example:
+
+Introduction
+Testing Environment & Methodology
+Bugs & Issues Identified
+3.1 Bug #1 – [Short title]
+3.2 Bug #2 – [Short title]
+…
+Innovation & Feature Proposals
+Technical Approach
+Expected Impact
+GitHub Repository & How to Use It
+3. Introduction
+Briefly summarize what you did:
+
+Objective:
+
+To identify and document bugs in CHAMACONNECT and propose fixes and improvements, as required by the bug bounty.
+Scope of Testing:
+
+Account creation & login
+Chama creation and management
+Circle / sacco setup and related flows
+[Add any other areas you tested: contributions, loan features, dashboards, etc.]
+Approach Summary:
+
+Systematically explored core flows as a typical chama/sacco user.
+Focused on:
+Functional bugs
+Usability/performance issues
+Potential security/financial correctness problems
+Opportunities for FinTech‑specific innovation
+4. Testing Environment & Methodology
+Create a concise section like this:
+
+4.1 Environment
+For each environment you used, list:
+
+Device: (e.g., Laptop – Intel i5, 8GB RAM)
+OS: (e.g., Windows 11 / Ubuntu 22.04 / Android 13 / iOS version)
+Browser/App: (e.g., Chrome 123.x, Firefox 115.x, mobile browser, etc.)
+Network conditions: (e.g., Home Wi‑Fi, 4G mobile data)
+This directly matches what they described (machine specs + context).
+
+4.2 Methodology
+Explain how you tested:
+
+Systematically went through:
+Registration, login, profile setup
+Creating a chama
+Creating a circle/sacco
+Adding members/roles (where possible)
+Financial operations (contributions, payouts, interest where applicable)
+For each flow:
+Tested normal usage (valid inputs).
+Tested edge cases (invalid/missing data, large values).
+Tested navigation (back/forward, refresh, re‑login).
+Documented each bug using:
+Context, environment, steps to reproduce, expected vs actual, screenshots, and proposed solution.
+5. Bugs & Issues Identified (Main Scoring Area)
+Create a subsection for each bug. The more important and well‑documented, the better.
+
+5.1 Bug #1 – [Short Title, e.g., “Chama Creation Fails on Final Step”]
+a) Summary
+
+Short 1–2 line description of the bug and why it matters.
+b) Context / What I Was Doing
+
+Example:
+“I was trying to create a new chama with 5 members and set the monthly contribution amount.”
+c) Environment
+
+Device: [e.g., Dell Laptop, Intel i5, 8GB RAM]
+OS: [e.g., Windows 11 Pro]
+Browser: [e.g., Chrome 123.x]
+Network: [e.g., Home Wi‑Fi, 20 Mbps]
+d) Steps to Reproduce (very important)
+
+Numbered, very explicit:
+
+Log in to CHAMACONNECT as user [example@domain.com].
+Click on “Create Chama” from the main menu.
+Fill in [field A] with [value], [field B] with [value]…
+Click Next until you reach [specific step/screen].
+Click Submit.
+e) Expected Result
+
+Example: “The chama should be created successfully and I should see a confirmation message and the new chama listed in my dashboard.”
+f) Actual Result
+
+Example:
+“A blank page loads with no confirmation, and the chama is not listed in the dashboard.”
+Include any error messages or odd behavior.
+g) Screenshot(s)
+
+Insert or reference screenshots (e.g., “See Screenshot 1: chama_error_step5.png”).
+h) Root Cause Hypothesis
+
+Your technical guess of what’s wrong. For example:
+Form validation might be failing on back‑end for [field].
+API call to endpoint [URL] may be returning an error.
+A null or missing field is not handled, etc.
+i) Proposed Solution
+
+Describe how you would fix it (high‑level or specific):
+
+Validate [field] on both front‑end and back‑end.
+Add error handling for [situation] and show friendly error message.
+Ensure the API returns proper HTTP codes and responses.
+Adjust DB constraints / logic if needed.
+j) Implementation Reference (GitHub)
+
+If you wrote sample code or a PoC fix, link to the relevant folder/file in your GitHub repo:
+GitHub: /bugs/chama-creation-fix/README.md
+Repeat that same structure for:
+
+5.2 Bug #2 – [Title]
+…
+
+5.3 Bug #3 – [Title]
+…
+
+Group them in descending order of severity and importance (critical issues first).
+
+6. Innovation & Feature Proposals
+This is your Section 2 that Carl mentioned (after bugs).
+
+For each innovation:
+
+6.1 Innovation #1 – [Feature Name, e.g., “Automated Fraud Detection for Chama Transactions”]
+a) Problem / Gap Observed
+
+What is missing or could be improved from the current system?
+Example:
+“Currently, there is no visible mechanism to detect suspicious transaction patterns or prevent internal chama fraud.”
+b) Proposed Feature / Idea
+
+Describe the feature clearly:
+What it does.
+Who uses it.
+What screens/flows it would touch.
+c) How It Enhances CHAMACONNECT as a FinTech Product
+
+Connect directly to what they said: chamas, groups, saccos, stable banking, fraud prevention, records, calculations, etc.
+
+How it helps:
+Chamas manage risks.
+Saccos track contributions more accurately.
+Users trust the platform more.
+
+**d) High‑Level Technical Approach**
+
+Describe stack-agnostic building blocks (APIs, data model, UI surfaces, rollout plan). If code is in GitHub, link paths. Keep scope feasible for a hackathon window.
+
+**e) Risks & Dependencies**
+
+Regulatory, data privacy, third-party APIs, or migration risks — brief and honest.
+
+**f) Success Metrics**
+
+Measurable outcomes (e.g. fewer failed saves, faster support resolution, treasurer task time).

@@ -2,7 +2,7 @@
 
 **Effective date:** 17 April 2026
 
-These terms address **repository use, notices, and contributor sign-off** in connection with the Chama Connect Virtual Hackathon. They are **subordinate** to the organizers’ binding contract: see **Official Submission Terms** below.
+These terms address **repository use, notices, and contributor sign-off** in connection with the Chama Connect Virtual Hackathon submission **Chama Connect QA/Bug Bounty #1**. They are **subordinate** to the organizers’ binding contract: see **Official Submission Terms** below.
 
 ## 0) Official Submission Terms (authoritative for participation and IP)
 

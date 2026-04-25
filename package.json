@@ -1,0 +1,11 @@
+{
+  "name": "chama-connect-qa-submission",
+  "private": true,
+  "description": "Chama Connect QA/Bug Bounty #1 — optional tooling to export docs/SUBMISSION_COMPLETE_FOR_PDF.md to PDF",
+  "scripts": {
+    "pdf": "md-to-pdf docs/SUBMISSION_COMPLETE_FOR_PDF.md"
+  },
+  "devDependencies": {
+    "md-to-pdf": "^5.2.4"
+  }
+}

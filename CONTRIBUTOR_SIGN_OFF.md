@@ -1,5 +1,7 @@
 # Contributor Sign-Off
 
+**Submission:** Chama Connect QA/Bug Bounty #1
+
 By contributing to this repository (including pull requests, issues with
 proposed code or text, or direct commits), you agree to the following.
 
