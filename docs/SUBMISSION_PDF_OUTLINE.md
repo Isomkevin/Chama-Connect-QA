@@ -6,7 +6,7 @@
 
 **Public GitHub:** Link this repository. **No secrets** in the repo.
 
-**Single PDF source (expanded):** Use **`docs/SUBMISSION_COMPLETE_FOR_PDF.md`** — it already includes **full CCQA-001–010 write-ups**, **filled §4.1 environment**, and **Innovation §6** (including **ChamaConnect 2.0** ideas). Export with **`npm run pdf:build`** (recommended) or `npx md-to-pdf docs/SUBMISSION_COMPLETE_FOR_PDF.md`. This file remains a shorter scaffold.
+**Single PDF source (expanded):** Use **`docs/SUBMISSION_COMPLETE_FOR_PDF.md`** — it already includes **full CCQA-001–012 write-ups**, **filled §4.1 environment**, and **Innovation §6** (including **ChamaConnect 2.0** ideas). Export with **`npm run pdf:build`** (recommended) or `npx md-to-pdf docs/SUBMISSION_COMPLETE_FOR_PDF.md`. This file remains a shorter scaffold.
 
 ---
 
@@ -18,7 +18,7 @@
 | **Participant** | Kevin Boaz Isom |
 | **Email** | kevinisom9000@gmail.com |
 | **Event** | ChamaConnect Virtual Hackathon (bug bounty / pre-launch feedback) |
-| **Date** | Saturday, 25 April 2026 (EAT) |
+| **Date** | Sunday, 26 April 2026 (EAT) — align with `SUBMISSION_COMPLETE_FOR_PDF.md` |
 | **Repository** | https://github.com/Isomkevin/Chama-Connect-QA |
 
 ---
@@ -77,13 +77,13 @@ Full execution log: **`docs/QA_EXECUTION_REPORT.md`**. Master plan: **`docs/QA_M
 
 - **Phased plan:** Phase 0 compliance → Phase 1 critical journeys → Phase 2 validation & modal reliability → Phase 3 safe stress (route churn, modal cycles, telemetry).  
 - **Evidence:** Screenshots and screen recording under **`Evidence_Files/`** (e.g. `20260425-1732-09.1854228.mp4`, `QA-*.png`, `QA-P2-*.png`).  
-- **Bug IDs:** Internal IDs **CCQA-001 … CCQA-010** map 1:1 to **`docs/QA_EXECUTION_REPORT.md`** for full repro and fix text.
+- **Bug IDs:** Internal IDs **CCQA-001 … CCQA-012** map 1:1 to **`docs/QA_EXECUTION_REPORT.md`** for full repro and fix text.
 
 ---
 
 ## 5. Bugs & Issues Identified (Primary Section)
 
-Use the same block **for each bug** in the PDF. Below: **summary table** + **fully expanded template for the highest-severity items**. For CCQA-006–009, copy the detailed bullets from `docs/QA_EXECUTION_REPORT.md`.
+Use the same block **for each bug** in the PDF. Below: **summary table** + **fully expanded template for the highest-severity items**. For CCQA-006–009 and **CCQA-011–012**, copy the detailed bullets from `docs/QA_EXECUTION_REPORT.md` (or use the expanded **`docs/SUBMISSION_COMPLETE_FOR_PDF.md`**).
 
 ### 5.0 Severity summary (descending order)
 
@@ -99,6 +99,8 @@ Use the same block **for each bug** in the PDF. Below: **summary table** + **ful
 | **CCQA-007** | Sidebar / viewport operability | Medium (S3) | Report |
 | **CCQA-008** | Dashboard chart dimension error | Medium (S3) | Console in report |
 | **CCQA-009** | Verbose client logging | Low (S4) | Console in report |
+| **CCQA-011** | Theme-stress truncated labels / chrome | Low (S4) | Phase 3 in `QA_EXECUTION_REPORT.md`; video |
+| **CCQA-012** | Notifications RSC fetch chatter | Low (S4) | Network/HAR; Phase 3 in report |
 
 ---
 
@@ -113,7 +115,8 @@ Exercising **Settings** and **Shares / configure** save flows under realistic �
 **c) Environment**  
 [Same as §4.1]
 
-**d) Steps to reproduce**  
+**d) Steps to reproduce** 
+
 1. Authenticate as chama admin.  
 2. Open **Settings** or **Configure Shares**.  
 3. Make a trivial edit (or none, if allowed).  
@@ -160,9 +163,9 @@ Combine narrative from [CCQA-002] and [CCQA-010] in `docs/QA_EXECUTION_REPORT.md
 
 ---
 
-### 5.4 Remaining bugs (CCQA-004 through CCQA-009)
+### 5.4 Remaining bugs (CCQA-004–009, CCQA-011–012)
 
-For the PDF: **either** paste each subsection from **`docs/QA_EXECUTION_REPORT.md`** **or** include a one-page table (ID, title, severity, 2-line summary, evidence filename) and state: *“Full GitHub-issue-style write-ups: see repository `docs/QA_EXECUTION_REPORT.md`.”*
+For the PDF: **either** paste each subsection from **`docs/QA_EXECUTION_REPORT.md`** **or** include a one-page table (ID, title, severity, 2-line summary, evidence filename) and state: *“Full GitHub-issue-style write-ups: see repository `docs/QA_EXECUTION_REPORT.md`.”* The canonical expanded copy is **`docs/SUBMISSION_COMPLETE_FOR_PDF.md`**.
 
 ---
 
@@ -200,12 +203,14 @@ This work gives ChamaConnect a **prioritized, evidence-backed defect backlog** f
 
 | Path | Description |
 |------|-------------|
-| `docs/QA_EXECUTION_REPORT.md` | **Chama Connect QA/Bug Bounty #1** — full bug register (CCQA-001–010), passed checks, risks |
+| `docs/QA_EXECUTION_REPORT.md` | **Chama Connect QA/Bug Bounty #1** — full bug register (CCQA-001–012), passed checks, risks |
 | `docs/QA_MASTER_TEST_PLAN.md` | **Chama Connect QA/Bug Bounty #1** — phased methodology |
 | `Evidence_Files/*.png` | Screenshots |
 | `Evidence_Files/*.mp4` | Full session recording |
 | `Hackathon-Info-Session-transcripts` | Organizer session notes (Otter) |
 | `Hackathon_Details.md` | Repo brief + PDF precedence |
+
+**Appendix A (CCQA → evidence filenames):** see **`docs/SUBMISSION_COMPLETE_FOR_PDF.md`** §8.1 — table keyed to files present under `Evidence_Files/`.
 
 ---
 

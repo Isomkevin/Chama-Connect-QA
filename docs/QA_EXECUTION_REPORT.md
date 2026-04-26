@@ -79,15 +79,15 @@ Executed on chama `69e22c983e9a7937fd3ca493` (LESOM Dynamics):
 Executed **without** load-flood or destructive actions:
 
 - **Route churn:** Sequential navigations across **loans → dashboard → contributions** (and intermediate hops); URLs and shells remained consistent after brief `Loading` states.
-- **Rapid UI stress:** **Toggle theme** clicked repeatedly on **loans** page; afterward the accessibility snapshot showed **truncated control names** (e.g. **Apply** vs **Apply Loan**, **Record** vs **Record Contribution**) and **reduced chrome** until viewport was resized to **1280×800** and pages reloaded — flag for **responsive / reflow** testing (no hard failure, but worth a UX regression ticket).
+- **Rapid UI stress:** **Toggle theme** clicked repeatedly on **loans** page; afterward the accessibility snapshot showed **truncated control names** (e.g. **Apply** vs **Apply Loan**, **Record** vs **Record Contribution**) and **reduced chrome** until viewport was resized to **1280×800** and pages reloaded — filed as **CCQA-011** (UX/a11y regression).
 - **Modal lifecycle stress:** On **contributions**, **Record → scroll Cancel → close** loop **twice**; both cycles completed cleanly when **Cancel** was scrolled into view first (consistent with CCQA-010 mitigation pattern).
-- **Network sample (post Phase 3):** Sampled traffic showed **only `200`** on listed XHRs; observed **multiple** near-simultaneous `GET` `_rsc` fetches to **`/admin/dashboard/notifications`** with varying cache-buster keys — **chatter** worth profiling (cost + battery) but not a functional failure in this sample.
+- **Network sample (post Phase 3):** Sampled traffic showed **only `200`** on listed XHRs; observed **multiple** near-simultaneous `GET` `_rsc` fetches to **`/admin/dashboard/notifications`** with varying cache-buster keys — filed as **CCQA-012** (performance / cost hygiene; not a functional failure in this sample).
 
 ---
 
 ## Defect Backlog (Prioritized by Win Impact)
 
-###[CCQA-001] Login route mismatch and auth-link inconsistency
+### [CCQA-001] Login route mismatch and auth-link inconsistency
 
 - Severity: `S2 High` | Impact weight: `W3 High`
 - Area: Auth routing
@@ -110,7 +110,7 @@ Executed **without** load-flood or destructive actions:
   - Define one canonical login route and enforce via central route constants.
   - Add link integrity tests for all auth surfaces.
 
-###[CCQA-002] Click interception blocks tab navigation in chama detail
+### [CCQA-002] Click interception blocks tab navigation in chama detail
 
 - Severity: `S2 High` | Impact weight: `W3 High`
 - Area: Chama detail navigation
@@ -128,7 +128,7 @@ Executed **without** load-flood or destructive actions:
   - Audit z-index/stacking contexts and fixed footer overlap behavior.
   - Add UI test for clickable nav elements across breakpoints.
 
-###[CCQA-003] Duplicate write requests on stressed Save actions
+### [CCQA-003] Duplicate write requests on stressed Save actions
 
 - Severity: `S1 Critical` | Impact weight: `W3 High`
 - Areas:
@@ -148,7 +148,7 @@ Executed **without** load-flood or destructive actions:
   - Client-side submit lock/debounce.
   - Server-side idempotency key or duplicate-request guard.
 
-###[CCQA-004] Critical modal actions unreachable in constrained viewport
+### [CCQA-004] Critical modal actions unreachable in constrained viewport
 
 - Severity: `S2 High` | Impact weight: `W3 High`
 - Area: Goals modal and other vertical forms
@@ -166,7 +166,7 @@ Executed **without** load-flood or destructive actions:
   - Responsive modal redesign with fixed action bar.
   - Keyboard escape and focus-trap tested at small heights.
 
-###[CCQA-005] Loan submission lacks clear required-field feedback
+### [CCQA-005] Loan submission lacks clear required-field feedback
 
 - Severity: `S3 Medium` | Impact weight: `W2 Medium`
 - Area: Loans -> Apply Loan
@@ -183,7 +183,7 @@ Executed **without** load-flood or destructive actions:
 - Recommended fix:
   - Enforce schema validation and per-field messaging.
 
-###[CCQA-006] Fine submission validation feedback is weak/non-visible
+### [CCQA-006] Fine submission validation feedback is weak/non-visible
 
 - Severity: `S3 Medium` | Impact weight: `W2 Medium`
 - Area: Fines -> Add Fine
@@ -200,7 +200,7 @@ Executed **without** load-flood or destructive actions:
 - Recommended fix:
   - Add clear validation text and focused error handling.
 
-###[CCQA-007] Viewport-dependent nav operability issues
+### [CCQA-007] Viewport-dependent nav operability issues
 
 - Severity: `S3 Medium` | Impact weight: `W2 Medium`
 - Area: Sidebar links
@@ -217,7 +217,7 @@ Executed **without** load-flood or destructive actions:
 - Recommended fix:
   - Make sidebar independently scrollable with persistent pointer access.
 
-###[CCQA-008] Chart runtime error in dashboard
+### [CCQA-008] Chart runtime error in dashboard
 
 - Severity: `S3 Medium` | Impact weight: `W2 Medium`
 - Area: Dashboard charts
@@ -230,7 +230,7 @@ Executed **without** load-flood or destructive actions:
 - Recommended fix:
   - Enforce min dimensions and safe chart rendering guards.
 
-###[CCQA-009] Excessive production logging noise
+### [CCQA-009] Excessive production logging noise
 
 - Severity: `S4 Low` | Impact weight: `W1 Low`
 - Area: Client runtime
@@ -243,7 +243,7 @@ Executed **without** load-flood or destructive actions:
 - Recommended fix:
   - Strip or gate verbose logs in production builds.
 
-###[CCQA-010] Modal full-screen overlay intercepts clicks until user scrolls primary actions into view
+### [CCQA-010] Modal full-screen overlay intercepts clicks until user scrolls primary actions into view
 
 - Severity: `S3 Medium` | Impact weight: `W2 Medium` (elevate to `S2` if reproduced without workaround on common devices)
 - Area: Financial modals (Contributions, Loans, Fines, Goals patterns)
@@ -260,6 +260,40 @@ Executed **without** load-flood or destructive actions:
   - Users may think the app is frozen; increases failed submissions and support burden.
 - Recommended fix:
   - Sticky modal action bar; auto-scroll to first invalid field on submit; reduce overlay hit-target conflicts.
+
+### [CCQA-011] Theme-stress UI reflow — truncated accessible names and reduced chrome until viewport resize / reload
+
+- Severity: `S4 Low` | Impact weight: `W1 Low`
+- Area: Global chrome / responsive layout (observed on **Loans** after rapid **theme** toggle)
+- Repro:
+  1. Open **Loans** for the test chama.
+  2. Rapidly toggle **theme** (safe stress).
+  3. Inspect primary CTA labels / accessibility names (e.g. **Apply** vs **Apply Loan**).
+  4. Resize viewport and/or reload — observe normalization.
+- Actual:
+  - Truncated names and reduced chrome until resize + reload (see Phase 3 notes above).
+- Expected:
+  - Stable labels and layout across theme switches.
+- Business impact:
+  - Accessibility and mis-click risk in financial contexts.
+- Recommended fix:
+  - CSS containment / stable layout keys; visual regression test after repeated theme toggles.
+
+### [CCQA-012] Dashboard notifications — redundant RSC / fetch chatter after navigation
+
+- Severity: `S4 Low` | Impact weight: `W1 Low`
+- Area: Client fetching / RSC traffic
+- Repro:
+  1. Run Phase 3 route churn.
+  2. In Network, inspect `GET` patterns to `/admin/dashboard/notifications` and related `_rsc` requests.
+- Actual:
+  - Multiple near-simultaneous requests with varying cache-buster keys; no `5xx` in sampled traffic.
+- Expected:
+  - Deduplicated or cached fetches; single-flight behavior.
+- Business impact:
+  - Cost, battery, and data at scale; minor jank risk.
+- Recommended fix:
+  - SWR/dedupe; review invalidation strategy for notifications route.
 
 ---
 
@@ -280,6 +314,7 @@ Executed **without** load-flood or destructive actions:
 - `High`: Auth route inconsistency can break first-run conversion.
 - `High`: Modal/nav interaction blockers reduce operational reliability.
 - `Medium`: Validation clarity gaps and runtime chart errors degrade trust.
+- `Low`: Theme-stress label truncation (CCQA-011) and notification fetch chatter (CCQA-012) — scale and polish risks.
 
 ---
 

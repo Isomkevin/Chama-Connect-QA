@@ -14,13 +14,7 @@
     </style>
   </head>
   <body>
-    <hr>
-<h2>title: &quot;Chama Connect QA/Bug Bounty #1&quot;
-pdf_options:
-  format: A4
-  printBackground: true
-  margin: 18mm</h2>
-<h1>Chama Connect QA/Bug Bounty #1</h1>
+    <h1>Chama Connect QA/Bug Bounty #1</h1>
 <p><strong>Complete document for PDF export.</strong> Use <code>npm run pdf:build</code> (HTML + Edge) or <code>npx md-to-pdf docs/SUBMISSION_COMPLETE_FOR_PDF.md</code>; see <code>HACKATHON_PROPOSAL.md</code>.</p>
 <hr>
 <h2>1. Cover Page</h2>
@@ -49,7 +43,7 @@ pdf_options:
 </tr>
 <tr>
 <td><strong>Date</strong></td>
-<td>Saturday, 25 April 2026 (EAT, Africa/Nairobi)</td>
+<td>Sunday, 26 April 2026 (EAT, Africa/Nairobi) — final PDF revision</td>
 </tr>
 <tr>
 <td><strong>Repository</strong></td>
@@ -69,7 +63,8 @@ pdf_options:
 <li><a href="#5-bugs--issues-identified-primary-section">Bugs &amp; issues identified</a>  </li>
 <li><a href="#6-innovation--feature-proposals-section-2">Innovation &amp; feature proposals</a>  </li>
 <li><a href="#7-expected-impact">Expected impact</a>  </li>
-<li><a href="#8-repository--evidence-index">Repository &amp; evidence index</a></li>
+<li><a href="#8-repository--evidence-index">Repository &amp; evidence index</a>  </li>
+<li><a href="#appendix-a-ccqa-evidence-index">Appendix A — CCQA evidence file index</a></li>
 </ol>
 <hr>
 <h2>3. Introduction &amp; scope</h2>
@@ -84,7 +79,10 @@ pdf_options:
 </ul>
 <h3>3.3 Scope</h3>
 <p>Authenticated admin flows for one test chama (<strong>LESOM Dynamics</strong>, group id used in routes: <code>69e22c983e9a7937fd3ca493</code>). Phases: P0 compliance → P1 journeys → P2 validation/modals → P3 safe stress (no DoS, no harmful production testing per PDF §5).</p>
+<p><strong>Coverage transparency:</strong> <strong>Expenses</strong>, <strong>Income</strong>, and <strong>Appeals</strong> (alongside Fines) were exercised at <strong>route and navigation</strong> level and through <strong>shared UI patterns</strong> (sidebar, modals, overlays). No <strong>module-specific</strong> defects were isolated beyond the cross-cutting issues <strong>CCQA-002</strong>, <strong>CCQA-007</strong>, and <strong>CCQA-010</strong> (nav/modal reliability). This is intentional scope honesty for judges verifying depth vs. breadth.</p>
 <p>Supporting repo docs: <code>docs/QA_MASTER_TEST_PLAN.md</code>, <code>docs/QA_EXECUTION_REPORT.md</code>, <code>Hackathon-Info-Session-transcripts</code>.</p>
+<h3>3.4 Submission checklist (info session + PDF)</h3>
+<p>Aligned with organizer guidance (<code>Hackathon-Info-Session-transcripts</code>): <strong>live account</strong> on the platform; <strong>GitHub-issue-style</strong> write-ups (context, environment, numbered repro, expected vs actual, evidence, cause hypothesis, fix); <strong>machine and browser</strong> captured in §4.1; <strong>bugs first</strong>, <strong>innovations second</strong> in this single document; <strong>public GitHub</strong> and <strong>no secrets</strong>; testing <strong>compliant</strong> with official terms (no disruptive or harmful production behavior).</p>
 <hr>
 <h2>4. Testing environment &amp; methodology</h2>
 <h3>4.1 Environment (actual machine used for this submission)</h3>
@@ -105,7 +103,7 @@ pdf_options:
 </tr>
 <tr>
 <td><strong>Browser</strong></td>
-<td><strong>Google Chrome</strong> (stable channel) for manual exploratory testing. <strong>Cursor IDE embedded browser</strong> (Chromium-based automation) used for reproducible navigation, snapshots, and screenshot capture.</td>
+<td><strong>Google Chrome</strong> (stable channel) for manual exploratory testing. <strong>Cursor IDE embedded browser</strong> (Chromium-based automation) used for reproducible navigation, snapshots, and screenshot capture. For strict reproducibility, record <strong>chrome://version</strong> (full version string) at the same time as any new evidence capture and paste into issue text or appendix.</td>
 </tr>
 <tr>
 <td><strong>Network</strong></td>
@@ -124,8 +122,14 @@ pdf_options:
 <ul>
 <li>Systematic module coverage (sidebar + direct URLs).  </li>
 <li>Negative tests (empty submits, modal cancel/submit cycles).  </li>
-<li><strong>Phase 3:</strong> rapid route changes, repeated theme toggle, modal open/close loops; sampled <strong>Network</strong> (no <code>5xx</code> in sample); noted RSC notification <strong>chatter</strong>.  </li>
-<li>Evidence: <strong><code>Evidence_Files/</code></strong> — e.g. <code>20260425-1732-09.1854228.mp4</code>, <code>QA-01</code>–<code>QA-13</code>, <code>QA-BUG-01-*</code>, <code>QA-P2-*</code>.</li>
+<li><strong>Phase 3:</strong> rapid route changes, repeated theme toggle, modal open/close loops; sampled <strong>Network</strong> (no <code>5xx</code> in sample); noted RSC notification <strong>chatter</strong> (see <strong>CCQA-012</strong>).  </li>
+<li>Evidence: <strong><code>Evidence_Files/</code></strong> — e.g. <code>20260425-1732-09.1854228.mp4</code>, <code>QA-01</code>–<code>QA-13</code>, <code>QA-BUG-01-*</code>, <code>QA-P2-*</code>; full recording also linked from <code>docs/QA_EXECUTION_REPORT.md</code>.</li>
+</ul>
+<h3>4.3 Reproducibility for judges</h3>
+<ul>
+<li>Each defect below lists <strong>severity</strong>, <strong>area</strong>, <strong>steps</strong>, <strong>expected/actual</strong>, <strong>business impact</strong>, and <strong>fix direction</strong>.  </li>
+<li><strong>Network-heavy</strong> items (e.g. <strong>CCQA-003</strong>, <strong>CCQA-012</strong>): attach or retain a <strong>HAR</strong> from Chrome DevTools when reproducing for maintainer handoff.  </li>
+<li><strong>Video:</strong> session walkthrough referenced from <code>docs/QA_EXECUTION_REPORT.md</code> (Google Drive) plus local <code>Evidence_Files/*.mp4</code> when present in the clone.</li>
 </ul>
 <hr>
 <h2>5. Bugs &amp; issues identified (primary section)</h2>
@@ -188,8 +192,18 @@ pdf_options:
 <td>Excessive production logging noise</td>
 <td><strong>S4 Low</strong></td>
 </tr>
+<tr>
+<td>CCQA-011</td>
+<td>Theme-stress UI reflow — truncated labels / reduced chrome until resize</td>
+<td><strong>S4 Low</strong></td>
+</tr>
+<tr>
+<td>CCQA-012</td>
+<td>Dashboard notifications — redundant RSC / fetch chatter</td>
+<td><strong>S4 Low</strong></td>
+</tr>
 </tbody></table>
-<p><strong>Evidence mapping:</strong> See <code>Evidence_Files/</code> PNGs and MP4; filenames referenced in <code>docs/QA_EXECUTION_REPORT.md</code>.</p>
+<p><strong>Evidence mapping:</strong> See <code>Evidence_Files/</code> PNGs and MP4; filenames referenced in <code>docs/QA_EXECUTION_REPORT.md</code>. <strong>CCQA-011</strong> / <strong>CCQA-012</strong> are primarily documented via <strong>Phase 3</strong> execution notes, console/network telemetry, and session recording — add dedicated screenshots if exporting a v2 evidence pack.</p>
 <hr>
 <h3>[CCQA-001] Login route mismatch and auth-link inconsistency</h3>
 <ul>
@@ -347,6 +361,42 @@ pdf_options:
 <li><strong>Evidence:</strong> <code>Evidence_Files/QA-BUG-01-Contribution-submit-click-intercepted.png</code>, <code>QA-P2-01-Contribution-empty-validation.png</code>.</li>
 </ul>
 <hr>
+<h3>[CCQA-011] Theme-stress UI reflow — truncated accessible names and reduced chrome until viewport resize / reload</h3>
+<ul>
+<li><strong>Severity:</strong> <code>S4 Low</code> | <strong>Impact weight:</strong> <code>W1 Low</code> (elevate if production users report <strong>mis-clicks</strong> after theme changes)  </li>
+<li><strong>Area:</strong> Global chrome / responsive layout (observed on <strong>Loans</strong> after rapid <strong>theme</strong> toggle)  </li>
+<li><strong>Steps to reproduce:</strong>  <ol>
+<li>Authenticate and open <strong>Loans</strong> (<code>/admin/chamas/…/loans</code>).  </li>
+<li>Click <strong>Toggle theme</strong> rapidly many times (safe stress; no flood beyond normal UI use).  </li>
+<li>Observe primary actions in the accessibility tree (or visible button text).  </li>
+<li>Without reloading, compare control <strong>accessible names</strong> (e.g. <strong>Apply Loan</strong> vs truncated <strong>Apply</strong>).  </li>
+<li>Resize viewport to <strong>1280×800</strong> (or similar) and/or <strong>hard reload</strong> — observe labels/chrome return to expected state.</li>
+</ol>
+</li>
+<li><strong>Actual:</strong> After stress, snapshots showed <strong>truncated</strong> control names and <strong>reduced chrome</strong> until viewport resize and page reload normalized the UI.  </li>
+<li><strong>Expected:</strong> Theme toggling must not regress layout, labeling, or hit targets; strings and layout should remain stable across light/dark switches.  </li>
+<li><strong>Business impact:</strong> <strong>Accessibility</strong> and <strong>trust</strong> risk if users see ambiguous actions (<strong>Apply</strong> vs <strong>Apply Loan</strong>); possible contributor to mis-taps in financial modules.  </li>
+<li><strong>Recommended fix:</strong> Isolate theme transition from layout reflow (CSS containment / stable flex keys); add visual regression or component test for loans header actions after <code>N</code> theme toggles.  </li>
+<li><strong>Evidence:</strong> <code>docs/QA_EXECUTION_REPORT.md</code> § Phase 3 (rapid UI stress); session <strong>MP4</strong>; optional follow-up PNG export.</li>
+</ul>
+<hr>
+<h3>[CCQA-012] Dashboard notifications — redundant RSC / fetch chatter after navigation</h3>
+<ul>
+<li><strong>Severity:</strong> <code>S4 Low</code> | <strong>Impact weight:</strong> <code>W1 Low</code>  </li>
+<li><strong>Area:</strong> Client data fetching / React Server Components traffic  </li>
+<li><strong>Steps to reproduce:</strong>  <ol>
+<li>Perform <strong>Phase 3</strong> route churn (e.g. loans → dashboard → contributions).  </li>
+<li>Open Chrome <strong>Network</strong>; filter XHR/fetch or search for <code>notifications</code> and <code>_rsc</code>.  </li>
+<li>Observe <strong>multiple</strong> near-simultaneous <strong><code>GET</code></strong> requests to <strong><code>/admin/dashboard/notifications</code></strong> (and related <strong><code>_rsc</code></strong> payloads) with <strong>varying cache-buster</strong> query parameters.</li>
+</ol>
+</li>
+<li><strong>Actual:</strong> <strong>Chatter</strong> pattern — more round-trips than needed for a single logical “notifications” refresh. No <strong><code>5xx</code></strong> observed in the sampled run.  </li>
+<li><strong>Expected:</strong> <strong>Deduplicated</strong> fetches, <strong>stable caching</strong>, or <strong>single-flight</strong> client policy; backoff when tab is hidden.  </li>
+<li><strong>Business impact:</strong> <strong>Mobile data</strong>, <strong>battery</strong>, and <strong>server cost</strong> at scale; minor <strong>perceived jank</strong> if main thread contends with parse work.  </li>
+<li><strong>Recommended fix:</strong> Request <strong>deduplication</strong> / <strong>SWR</strong>-style cache; align <strong><code>_rsc</code></strong> invalidation granularity; profile after navigation storms.  </li>
+<li><strong>Evidence:</strong> Network panel export (HAR) attached to issue or repo; cross-reference <code>docs/QA_EXECUTION_REPORT.md</code> § Phase 3.</li>
+</ul>
+<hr>
 <h2>6. Innovation &amp; feature proposals (Section 2)</h2>
 <p>This section complements the bug bounty by proposing <strong>high-impact FinTech</strong> upgrades. Several items are <strong>grounded in the companion “ChamaConnect 2.0” codebase</strong> at <strong><code>Chama-Connect-2-point-o</code></strong> (React/Vite admin, typed domain, Express LLM routes — see that repo’s <code>README.md</code>, <code>HACKATHON_PROPOSAL.md</code>, and <code>docs/TECHNICAL_PROPOSAL.md</code>). They are <strong>design references</strong> for the production platform, not claims of deployed code on chamaconnect.io.</p>
 <h3>6.1 ICDMS-style <strong>Cases</strong> module + grounded <strong>AI case suggest</strong></h3>
@@ -367,7 +417,7 @@ pdf_options:
 <p><strong>Proposal:</strong> Idempotent <strong><code>PATCH</code></strong> with <strong>ETag</strong>/version; <strong>single-flight</strong> client lock; server <strong>dedupe</strong> window.<br><strong>Impact:</strong> Protects <strong>financial config</strong> integrity — highest ROI fix paired with audit (6.3).</p>
 <hr>
 <h2>7. Expected impact</h2>
-<p>This submission gives ChamaConnect a <strong>prioritized, evidence-backed defect backlog</strong> focused on <strong>financial correctness, navigation reliability, and governance UX</strong>, plus <strong>concrete engineering and product proposals</strong> (including <strong>ChamaConnect 2.0</strong>-sourced innovations) aligned with <strong>SACCO/chama</strong> operations and organizer criteria: <strong>technical depth</strong>, <strong>clarity</strong>, and <strong>impact</strong>. The public GitHub repo, <strong>screen recording</strong>, and structured reports make findings <strong>reproducible</strong> and <strong>low cost to verify</strong>.</p>
+<p>This submission gives ChamaConnect a <strong>prioritized, evidence-backed defect backlog</strong> (<strong>twelve</strong> tracked issues <strong>CCQA-001–012</strong>) focused on <strong>financial correctness, navigation reliability, governance UX</strong>, and <strong>performance hygiene</strong>, plus <strong>concrete engineering and product proposals</strong> (including <strong>ChamaConnect 2.0</strong>-sourced innovations) aligned with <strong>SACCO/chama</strong> operations and organizer criteria: <strong>technical depth</strong>, <strong>clarity</strong>, <strong>quantity and quality</strong> of findings, and <strong>impact</strong>. The public GitHub repo, <strong>screen recording</strong>, and structured reports make findings <strong>reproducible</strong> and <strong>low cost to verify</strong>.</p>
 <hr>
 <h2>8. Repository &amp; evidence index</h2>
 <table>
@@ -406,6 +456,79 @@ pdf_options:
 <td>Organizer session notes</td>
 </tr>
 </tbody></table>
+<h3 id="appendix-a-ccqa-evidence-index">8.1 Appendix A — CCQA evidence file index (repo snapshot)</h3><p><strong>Purpose:</strong> One place for judges to open the <strong>exact</strong> artifact for each defect (CCQA to filename). Filenames below were <strong>verified present</strong> under <code>Evidence_Files/</code> in this repository (PNG list + automation <code>page-*</code> captures). Items marked <strong>—</strong> have no dedicated still in-repo (rely on <strong>write-up</strong>, <strong>console/HAR</strong>, or <strong>video</strong>).</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Evidence files in <code>Evidence_Files/</code></th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>CCQA-001</strong></td>
+<td>—</td>
+<td>Capture <strong>404 on <code>/login</code></strong> and working <strong><code>/get-started</code></strong> per write-up; full walkthrough on <strong>Google Drive</strong> in <code>docs/QA_EXECUTION_REPORT.md</code>.</td>
+</tr>
+<tr>
+<td><strong>CCQA-002</strong></td>
+<td>—</td>
+<td>Repro + narrative in <code>docs/QA_EXECUTION_REPORT.md</code>; session video (Drive).</td>
+</tr>
+<tr>
+<td><strong>CCQA-003</strong></td>
+<td>—</td>
+<td><strong>HAR</strong> from DevTools not stored in repo; duplicate <code>PATCH</code> shown via Network when reproducing.</td>
+</tr>
+<tr>
+<td><strong>CCQA-004</strong></td>
+<td><code>QA-P2-04-Goals-modal-short-viewport.png</code></td>
+<td>Goals modal / short viewport.</td>
+</tr>
+<tr>
+<td><strong>CCQA-005</strong></td>
+<td><code>QA-P2-02-Loan-empty-submit-attempt.png</code></td>
+<td>Loan empty / unclear validation.</td>
+</tr>
+<tr>
+<td><strong>CCQA-006</strong></td>
+<td><code>QA-P2-03-Fine-empty-submit-html5.png</code>, <code>QA-P2-03b-Fines-add-modal.png</code></td>
+<td>Fines / HTML5 validation context.</td>
+</tr>
+<tr>
+<td><strong>CCQA-007</strong></td>
+<td>—</td>
+<td>Sidebar viewport issues — documented in execution report; add dedicated PNG if re-run.</td>
+</tr>
+<tr>
+<td><strong>CCQA-008</strong></td>
+<td>—</td>
+<td>Chart dimension <strong>console</strong> error — see <code>docs/QA_EXECUTION_REPORT.md</code>.</td>
+</tr>
+<tr>
+<td><strong>CCQA-009</strong></td>
+<td>—</td>
+<td>Verbose <strong>console</strong> logging — see report.</td>
+</tr>
+<tr>
+<td><strong>CCQA-010</strong></td>
+<td><code>QA-BUG-01-Contribution-submit-click-intercepted.png</code>, <code>QA-P2-01-Contribution-empty-validation.png</code></td>
+<td>Contribution modal intercept + validation once actions reachable.</td>
+</tr>
+<tr>
+<td><strong>CCQA-011</strong></td>
+<td>—</td>
+<td>Phase 3 theme-stress — narrative + video; optional follow-up PNG.</td>
+</tr>
+<tr>
+<td><strong>CCQA-012</strong></td>
+<td>—</td>
+<td>Phase 3 <strong>Network</strong> / <strong>HAR</strong> — not committed; see report.</td>
+</tr>
+</tbody></table>
+<p><strong>Journey / module context stills (P1 coverage; not 1:1 to a single CCQA):</strong><br><code>QA-01-Shares-overview.png</code>, <code>QA-02-Members-overview.png</code>, <code>QA-03-Chama-overview.png</code>, <code>QA-04-Members-page.png</code>, <code>QA-05-Contributions-page.png</code>, <code>QA-06-Income-page.png</code>, <code>QA-07-Loans-page.png</code>, <code>QA-08-Expenses-page.png</code>, <code>QA-09-Fines-page.png</code>, <code>QA-10-Fines-appeals-tab.png</code>, <code>QA-11-Goals-page.png</code>, <code>QA-12-Shares-page.png</code>, <code>QA-13-Settings-page.png</code>.</p>
+<p><strong>Automation viewport captures (general session):</strong><br><code>page-2026-04-25T17-31-49-250Z.png</code>, <code>page-2026-04-25T17-32-24-609Z.png</code>, <code>page-2026-04-25T17-32-44-305Z.png</code>, <code>QA-temp-modal-viewport.png</code>.</p>
+<p><strong>Video:</strong> <code>Evidence_Files/*.mp4</code> is <strong>gitignored</strong>; same recording is linked from <strong><code>docs/QA_EXECUTION_REPORT.md</code></strong> (Google Drive: <code>20260425-1732-09.1854228.mp4</code>).</p>
 <p><strong>Support (transcript):</strong> verify official support email in organizer comms (transcript mentions <code>support@temaconnect.io</code> — may be transcription error).</p>
 
   </body>

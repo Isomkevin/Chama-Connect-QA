@@ -8,7 +8,7 @@ This repository is a **competition-grade QA / bug-bounty submission** for the li
 
 | Document | Purpose |
 |----------|---------|
-| **`docs/SUBMISSION_COMPLETE_FOR_PDF.md`** | **Export this file to PDF** for judges — full bug write-ups (CCQA-001–010), filled testing environment, methodology, innovation (including ideas from **ChamaConnect 2.0**), evidence index. |
+| **`docs/SUBMISSION_COMPLETE_FOR_PDF.md`** | **Export this file to PDF** for judges — full bug write-ups (CCQA-001–012), filled testing environment, methodology, innovation (including ideas from **ChamaConnect 2.0**), evidence index. |
 | **`docs/SUBMISSION_PDF_OUTLINE.md`** | Shorter outline + same structure (useful while editing). |
 | **`docs/QA_EXECUTION_REPORT.md`** | Living execution log, Phase 2–3 notes, risk register, paste-ready closing narrative. |
 | **`docs/QA_MASTER_TEST_PLAN.md`** | Phased methodology. |

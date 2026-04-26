@@ -1,11 +1,3 @@
----
-title: "Chama Connect QA/Bug Bounty #1"
-pdf_options:
-  format: A4
-  printBackground: true
-  margin: 18mm
----
-
 # Chama Connect QA/Bug Bounty #1
 
 **Complete document for PDF export.** Use `npm run pdf:build` (HTML + Edge) or `npx md-to-pdf docs/SUBMISSION_COMPLETE_FOR_PDF.md`; see `HACKATHON_PROPOSAL.md`.
@@ -18,10 +10,10 @@ pdf_options:
 |--------|---------|
 | **Title** | Chama Connect QA/Bug Bounty #1 |
 | **Participant** | Kevin Boaz Isom |
-| **Email** | kevinisom9000@gmail.com |
+| **Email** | <kevinisom9000@gmail.com> |
 | **Event** | ChamaConnect Virtual Hackathon (bug bounty / pre-launch feedback) |
-| **Date** | Saturday, 25 April 2026 (EAT, Africa/Nairobi) |
-| **Repository** | https://github.com/Isomkevin/Chama-Connect-QA |
+| **Date** | Sunday, 26 April 2026 (EAT, Africa/Nairobi) — final PDF revision |
+| **Repository** | <https://github.com/Isomkevin/Chama-Connect-QA> |
 | **Companion reference build** | GitHub: [MercyMurigi/Chama-Connect-2_0](https://github.com/MercyMurigi/Chama-Connect-2_0) — demo [chama-connect-2.vercel.app](https://chama-connect-2.vercel.app/) (ChamaConnect 2.0 concept) |
 
 **Authoritative rules:** [Official Submission Terms (PDF)](ChamaConnect-Hackathon-Source-Code-Submission-Terms-and-Conditions.pdf). If the info session deadline and PDF §7 differ, **follow the PDF and latest organizer message**.
@@ -36,6 +28,7 @@ pdf_options:
 4. [Innovation & feature proposals](#6-innovation--feature-proposals-section-2)  
 5. [Expected impact](#7-expected-impact)  
 6. [Repository & evidence index](#8-repository--evidence-index)  
+7. [Appendix A — CCQA evidence file index](#appendix-a-ccqa-evidence-index)  
 
 ---
 
@@ -56,7 +49,13 @@ Exercise **ChamaConnect** on **<https://www.chamaconnect.io/>** as a chama/SACCO
 
 Authenticated admin flows for one test chama (**LESOM Dynamics**, group id used in routes: `69e22c983e9a7937fd3ca493`). Phases: P0 compliance → P1 journeys → P2 validation/modals → P3 safe stress (no DoS, no harmful production testing per PDF §5).
 
+**Coverage transparency:** **Expenses**, **Income**, and **Appeals** (alongside Fines) were exercised at **route and navigation** level and through **shared UI patterns** (sidebar, modals, overlays). No **module-specific** defects were isolated beyond the cross-cutting issues **CCQA-002**, **CCQA-007**, and **CCQA-010** (nav/modal reliability). This is intentional scope honesty for judges verifying depth vs. breadth.
+
 Supporting repo docs: `docs/QA_MASTER_TEST_PLAN.md`, `docs/QA_EXECUTION_REPORT.md`, `Hackathon-Info-Session-transcripts`.
+
+### 3.4 Submission checklist (info session + PDF)
+
+Aligned with organizer guidance (`Hackathon-Info-Session-transcripts`): **live account** on the platform; **GitHub-issue-style** write-ups (context, environment, numbered repro, expected vs actual, evidence, cause hypothesis, fix); **machine and browser** captured in §4.1; **bugs first**, **innovations second** in this single document; **public GitHub** and **no secrets**; testing **compliant** with official terms (no disruptive or harmful production behavior).
 
 ---
 
@@ -68,7 +67,7 @@ Supporting repo docs: `docs/QA_MASTER_TEST_PLAN.md`, `docs/QA_EXECUTION_REPORT.m
 |-----------|--------|
 | **Device** | Windows desktop PC (64-bit), suitable for concurrent browser + IDE |
 | **OS** | **Windows 10 / 11** — build **10.0.26200** (win32) on the test machine |
-| **Browser** | **Google Chrome** (stable channel) for manual exploratory testing. **Cursor IDE embedded browser** (Chromium-based automation) used for reproducible navigation, snapshots, and screenshot capture. |
+| **Browser** | **Google Chrome** (stable channel) for manual exploratory testing. **Cursor IDE embedded browser** (Chromium-based automation) used for reproducible navigation, snapshots, and screenshot capture. For strict reproducibility, record **chrome://version** (full version string) at the same time as any new evidence capture and paste into issue text or appendix. |
 | **Network** | **Wi‑Fi** (residential/office), no intentional throttling |
 | **Target** | **<https://www.chamaconnect.io/>** |
 | **Account** | Individual ChamaConnect account; **ChamaAdmin** on test group **LESOM Dynamics** |
@@ -77,8 +76,14 @@ Supporting repo docs: `docs/QA_MASTER_TEST_PLAN.md`, `docs/QA_EXECUTION_REPORT.m
 
 - Systematic module coverage (sidebar + direct URLs).  
 - Negative tests (empty submits, modal cancel/submit cycles).  
-- **Phase 3:** rapid route changes, repeated theme toggle, modal open/close loops; sampled **Network** (no `5xx` in sample); noted RSC notification **chatter**.  
-- Evidence: **`Evidence_Files/`** — e.g. `20260425-1732-09.1854228.mp4`, `QA-01`–`QA-13`, `QA-BUG-01-*`, `QA-P2-*`.
+- **Phase 3:** rapid route changes, repeated theme toggle, modal open/close loops; sampled **Network** (no `5xx` in sample); noted RSC notification **chatter** (see **CCQA-012**).  
+- Evidence: **`Evidence_Files/`** — e.g. `20260425-1732-09.1854228.mp4`, `QA-01`–`QA-13`, `QA-BUG-01-*`, `QA-P2-*`; full recording also linked from `docs/QA_EXECUTION_REPORT.md`.
+
+### 4.3 Reproducibility for judges
+
+- Each defect below lists **severity**, **area**, **steps**, **expected/actual**, **business impact**, and **fix direction**.  
+- **Network-heavy** items (e.g. **CCQA-003**, **CCQA-012**): attach or retain a **HAR** from Chrome DevTools when reproducing for maintainer handoff.  
+- **Video:** session walkthrough referenced from `docs/QA_EXECUTION_REPORT.md` (Google Drive) plus local `Evidence_Files/*.mp4` when present in the clone.
 
 ---
 
@@ -98,8 +103,10 @@ Supporting repo docs: `docs/QA_MASTER_TEST_PLAN.md`, `docs/QA_EXECUTION_REPORT.m
 | CCQA-007 | Viewport-dependent nav operability issues | **S3 Medium** |
 | CCQA-008 | Chart runtime error in dashboard | **S3 Medium** |
 | CCQA-009 | Excessive production logging noise | **S4 Low** |
+| CCQA-011 | Theme-stress UI reflow — truncated labels / reduced chrome until resize | **S4 Low** |
+| CCQA-012 | Dashboard notifications — redundant RSC / fetch chatter | **S4 Low** |
 
-**Evidence mapping:** See `Evidence_Files/` PNGs and MP4; filenames referenced in `docs/QA_EXECUTION_REPORT.md`.
+**Evidence mapping:** See `Evidence_Files/` PNGs and MP4; filenames referenced in `docs/QA_EXECUTION_REPORT.md`. **CCQA-011** / **CCQA-012** are primarily documented via **Phase 3** execution notes, console/network telemetry, and session recording — add dedicated screenshots if exporting a v2 evidence pack.
 
 ---
 
@@ -253,6 +260,40 @@ Supporting repo docs: `docs/QA_MASTER_TEST_PLAN.md`, `docs/QA_EXECUTION_REPORT.m
 
 ---
 
+### [CCQA-011] Theme-stress UI reflow — truncated accessible names and reduced chrome until viewport resize / reload
+
+- **Severity:** `S4 Low` | **Impact weight:** `W1 Low` (elevate if production users report **mis-clicks** after theme changes)  
+- **Area:** Global chrome / responsive layout (observed on **Loans** after rapid **theme** toggle)  
+- **Steps to reproduce:**  
+  1. Authenticate and open **Loans** (`/admin/chamas/…/loans`).  
+  2. Click **Toggle theme** rapidly many times (safe stress; no flood beyond normal UI use).  
+  3. Observe primary actions in the accessibility tree (or visible button text).  
+  4. Without reloading, compare control **accessible names** (e.g. **Apply Loan** vs truncated **Apply**).  
+  5. Resize viewport to **1280×800** (or similar) and/or **hard reload** — observe labels/chrome return to expected state.  
+- **Actual:** After stress, snapshots showed **truncated** control names and **reduced chrome** until viewport resize and page reload normalized the UI.  
+- **Expected:** Theme toggling must not regress layout, labeling, or hit targets; strings and layout should remain stable across light/dark switches.  
+- **Business impact:** **Accessibility** and **trust** risk if users see ambiguous actions (**Apply** vs **Apply Loan**); possible contributor to mis-taps in financial modules.  
+- **Recommended fix:** Isolate theme transition from layout reflow (CSS containment / stable flex keys); add visual regression or component test for loans header actions after `N` theme toggles.  
+- **Evidence:** `docs/QA_EXECUTION_REPORT.md` § Phase 3 (rapid UI stress); session **MP4**; optional follow-up PNG export.
+
+---
+
+### [CCQA-012] Dashboard notifications — redundant RSC / fetch chatter after navigation
+
+- **Severity:** `S4 Low` | **Impact weight:** `W1 Low`  
+- **Area:** Client data fetching / React Server Components traffic  
+- **Steps to reproduce:**  
+  1. Perform **Phase 3** route churn (e.g. loans → dashboard → contributions).  
+  2. Open Chrome **Network**; filter XHR/fetch or search for `notifications` and `_rsc`.  
+  3. Observe **multiple** near-simultaneous **`GET`** requests to **`/admin/dashboard/notifications`** (and related **`_rsc`** payloads) with **varying cache-buster** query parameters.  
+- **Actual:** **Chatter** pattern — more round-trips than needed for a single logical “notifications” refresh. No **`5xx`** observed in the sampled run.  
+- **Expected:** **Deduplicated** fetches, **stable caching**, or **single-flight** client policy; backoff when tab is hidden.  
+- **Business impact:** **Mobile data**, **battery**, and **server cost** at scale; minor **perceived jank** if main thread contends with parse work.  
+- **Recommended fix:** Request **deduplication** / **SWR**-style cache; align **`_rsc`** invalidation granularity; profile after navigation storms.  
+- **Evidence:** Network panel export (HAR) attached to issue or repo; cross-reference `docs/QA_EXECUTION_REPORT.md` § Phase 3.
+
+---
+
 ## 6. Innovation & feature proposals (Section 2)
 
 This section complements the bug bounty by proposing **high-impact FinTech** upgrades. Several items are **grounded in the companion “ChamaConnect 2.0” codebase** at **`Chama-Connect-2-point-o`** (React/Vite admin, typed domain, Express LLM routes — see that repo’s `README.md`, `HACKATHON_PROPOSAL.md`, and `docs/TECHNICAL_PROPOSAL.md`). They are **design references** for the production platform, not claims of deployed code on chamaconnect.io.
@@ -310,7 +351,7 @@ This section complements the bug bounty by proposing **high-impact FinTech** upg
 
 ## 7. Expected impact
 
-This submission gives ChamaConnect a **prioritized, evidence-backed defect backlog** focused on **financial correctness, navigation reliability, and governance UX**, plus **concrete engineering and product proposals** (including **ChamaConnect 2.0**-sourced innovations) aligned with **SACCO/chama** operations and organizer criteria: **technical depth**, **clarity**, and **impact**. The public GitHub repo, **screen recording**, and structured reports make findings **reproducible** and **low cost to verify**.
+This submission gives ChamaConnect a **prioritized, evidence-backed defect backlog** (**twelve** tracked issues **CCQA-001–012**) focused on **financial correctness, navigation reliability, governance UX**, and **performance hygiene**, plus **concrete engineering and product proposals** (including **ChamaConnect 2.0**-sourced innovations) aligned with **SACCO/chama** operations and organizer criteria: **technical depth**, **clarity**, **quantity and quality** of findings, and **impact**. The public GitHub repo, **screen recording**, and structured reports make findings **reproducible** and **low cost to verify**.
 
 ---
 
@@ -325,5 +366,32 @@ This submission gives ChamaConnect a **prioritized, evidence-backed defect backl
 | `Evidence_Files/QA-*.png` | Screenshots |
 | `HACKATHON_PROPOSAL.md` | GitHub-facing stub |
 | `Hackathon-Info-Session-transcripts` | Organizer session notes |
+
+<h3 id="appendix-a-ccqa-evidence-index">8.1 Appendix A — CCQA evidence file index (repo snapshot)</h3>
+
+**Purpose:** One place for judges to open the **exact** artifact for each defect (CCQA to filename). Filenames below were **verified present** under `Evidence_Files/` in this repository (PNG list + automation `page-*` captures). Items marked **—** have no dedicated still in-repo (rely on **write-up**, **console/HAR**, or **video**).
+
+| ID | Evidence files in `Evidence_Files/` | Notes |
+|----|--------------------------------------|--------|
+| **CCQA-001** | — | Capture **404 on `/login`** and working **`/get-started`** per write-up; full walkthrough on **Google Drive** in `docs/QA_EXECUTION_REPORT.md`. |
+| **CCQA-002** | — | Repro + narrative in `docs/QA_EXECUTION_REPORT.md`; session video (Drive). |
+| **CCQA-003** | — | **HAR** from DevTools not stored in repo; duplicate `PATCH` shown via Network when reproducing. |
+| **CCQA-004** | `QA-P2-04-Goals-modal-short-viewport.png` | Goals modal / short viewport. |
+| **CCQA-005** | `QA-P2-02-Loan-empty-submit-attempt.png` | Loan empty / unclear validation. |
+| **CCQA-006** | `QA-P2-03-Fine-empty-submit-html5.png`, `QA-P2-03b-Fines-add-modal.png` | Fines / HTML5 validation context. |
+| **CCQA-007** | — | Sidebar viewport issues — documented in execution report; add dedicated PNG if re-run. |
+| **CCQA-008** | — | Chart dimension **console** error — see `docs/QA_EXECUTION_REPORT.md`. |
+| **CCQA-009** | — | Verbose **console** logging — see report. |
+| **CCQA-010** | `QA-BUG-01-Contribution-submit-click-intercepted.png`, `QA-P2-01-Contribution-empty-validation.png` | Contribution modal intercept + validation once actions reachable. |
+| **CCQA-011** | — | Phase 3 theme-stress — narrative + video; optional follow-up PNG. |
+| **CCQA-012** | — | Phase 3 **Network** / **HAR** — not committed; see report. |
+
+**Journey / module context stills (P1 coverage; not 1:1 to a single CCQA):**  
+`QA-01-Shares-overview.png`, `QA-02-Members-overview.png`, `QA-03-Chama-overview.png`, `QA-04-Members-page.png`, `QA-05-Contributions-page.png`, `QA-06-Income-page.png`, `QA-07-Loans-page.png`, `QA-08-Expenses-page.png`, `QA-09-Fines-page.png`, `QA-10-Fines-appeals-tab.png`, `QA-11-Goals-page.png`, `QA-12-Shares-page.png`, `QA-13-Settings-page.png`.
+
+**Automation viewport captures (general session):**  
+`page-2026-04-25T17-31-49-250Z.png`, `page-2026-04-25T17-32-24-609Z.png`, `page-2026-04-25T17-32-44-305Z.png`, `QA-temp-modal-viewport.png`.
+
+**Video:** `Evidence_Files/*.mp4` is **gitignored**; same recording is linked from **`docs/QA_EXECUTION_REPORT.md`** (Google Drive: `20260425-1732-09.1854228.mp4`).
 
 **Support (transcript):** verify official support email in organizer comms (transcript mentions `support@temaconnect.io` — may be transcription error).
