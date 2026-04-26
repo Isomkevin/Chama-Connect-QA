@@ -31,7 +31,7 @@ Full narrative, priorities, and references: **`Hackathon_Details.md`**.
 
 **Judge / submission write-ups**
 
-- **`docs/SUBMISSION_COMPLETE_FOR_PDF.md`** — **Primary PDF export**: full **CCQA-001–010** write-ups, filled **§4.1 environment** (Windows build 10.0.26200, Chrome + Cursor browser), methodology, **Innovation §6** (includes **ChamaConnect 2.0** ideas from `Chama-Connect-2-point-o`). Generate: `npx md-to-pdf docs/SUBMISSION_COMPLETE_FOR_PDF.md`.
+- **`docs/SUBMISSION_COMPLETE_FOR_PDF.md`** — **Primary PDF export**: full **CCQA-001–010** write-ups, filled **§4.1 environment** (Windows build 10.0.26200, Chrome + Cursor browser), methodology, **Innovation §6** (includes **ChamaConnect 2.0** ideas from `Chama-Connect-2-point-o`). Generate: **`npm run pdf:build`** (recommended) or `npx md-to-pdf docs/SUBMISSION_COMPLETE_FOR_PDF.md` — see `HACKATHON_PROPOSAL.md`.
 - **`docs/SUBMISSION_PDF_OUTLINE.md`** — Shorter scaffold (same structure); use if trimming the PDF.
 - **`docs/QA_EXECUTION_REPORT.md`** — Full execution results, defect backlog, passed checks, and submission narrative paste-block.
 - **`Evidence_Files/`** — `QA-*.png` / `QA-P2-*.png` stills for evidence.

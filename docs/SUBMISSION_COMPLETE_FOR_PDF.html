@@ -1,0 +1,412 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Chama Connect QA/Bug Bounty #1</title>
+    <style>
+      body { font-family: Arial, Helvetica, sans-serif; margin: 28px; line-height: 1.45; color: #111; }
+      h1, h2, h3 { color: #0f172a; page-break-after: avoid; }
+      table { border-collapse: collapse; width: 100%; margin: 12px 0; }
+      th, td { border: 1px solid #cbd5e1; padding: 8px; vertical-align: top; }
+      code, pre { background: #f8fafc; }
+      pre { padding: 10px; overflow: auto; border: 1px solid #e2e8f0; }
+      hr { border: 0; border-top: 1px solid #cbd5e1; margin: 20px 0; }
+    </style>
+  </head>
+  <body>
+    <hr>
+<h2>title: &quot;Chama Connect QA/Bug Bounty #1&quot;
+pdf_options:
+  format: A4
+  printBackground: true
+  margin: 18mm</h2>
+<h1>Chama Connect QA/Bug Bounty #1</h1>
+<p><strong>Complete document for PDF export.</strong> Use <code>npm run pdf:build</code> (HTML + Edge) or <code>npx md-to-pdf docs/SUBMISSION_COMPLETE_FOR_PDF.md</code>; see <code>HACKATHON_PROPOSAL.md</code>.</p>
+<hr>
+<h2>1. Cover Page</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Title</strong></td>
+<td>Chama Connect QA/Bug Bounty #1</td>
+</tr>
+<tr>
+<td><strong>Participant</strong></td>
+<td>Kevin Boaz Isom</td>
+</tr>
+<tr>
+<td><strong>Email</strong></td>
+<td><a href="mailto:kevinisom9000@gmail.com">kevinisom9000@gmail.com</a></td>
+</tr>
+<tr>
+<td><strong>Event</strong></td>
+<td>ChamaConnect Virtual Hackathon (bug bounty / pre-launch feedback)</td>
+</tr>
+<tr>
+<td><strong>Date</strong></td>
+<td>Saturday, 25 April 2026 (EAT, Africa/Nairobi)</td>
+</tr>
+<tr>
+<td><strong>Repository</strong></td>
+<td><a href="https://github.com/Isomkevin/Chama-Connect-QA">https://github.com/Isomkevin/Chama-Connect-QA</a></td>
+</tr>
+<tr>
+<td><strong>Companion reference build</strong></td>
+<td>GitHub: <a href="https://github.com/MercyMurigi/Chama-Connect-2_0">MercyMurigi/Chama-Connect-2_0</a> — demo <a href="https://chama-connect-2.vercel.app/">chama-connect-2.vercel.app</a> (ChamaConnect 2.0 concept)</td>
+</tr>
+</tbody></table>
+<p><strong>Authoritative rules:</strong> <a href="ChamaConnect-Hackathon-Source-Code-Submission-Terms-and-Conditions.pdf">Official Submission Terms (PDF)</a>. If the info session deadline and PDF §7 differ, <strong>follow the PDF and latest organizer message</strong>.</p>
+<hr>
+<h2>2. Table of Contents</h2>
+<ol>
+<li><a href="#3-introduction--scope">Introduction</a>  </li>
+<li><a href="#4-testing-environment--methodology">Testing environment &amp; methodology</a>  </li>
+<li><a href="#5-bugs--issues-identified-primary-section">Bugs &amp; issues identified</a>  </li>
+<li><a href="#6-innovation--feature-proposals-section-2">Innovation &amp; feature proposals</a>  </li>
+<li><a href="#7-expected-impact">Expected impact</a>  </li>
+<li><a href="#8-repository--evidence-index">Repository &amp; evidence index</a></li>
+</ol>
+<hr>
+<h2>3. Introduction &amp; scope</h2>
+<h3>3.1 Objective</h3>
+<p>Exercise <strong>ChamaConnect</strong> on <strong><a href="https://www.chamaconnect.io/">https://www.chamaconnect.io/</a></strong> as a chama/SACCO administrator: members, contributions, income, loans, expenses, fines (including appeals), goals, shares, and settings. Document defects in <strong>GitHub-issue style</strong>: context, environment, numbered repro steps, expected vs actual, screenshots/video, root-cause hypothesis, proposed fix.</p>
+<h3>3.2 Judging alignment (info session + PDF)</h3>
+<ul>
+<li><strong>Technical depth</strong> of bugs and of proposed remediation.  </li>
+<li><strong>Impact</strong> on real FinTech problems: trust, <strong>fraud awareness</strong>, <strong>traceable records</strong>, correct <strong>calculations</strong>, <strong>usability</strong>, <strong>performance</strong>.  </li>
+<li><strong>Clear documentation</strong> and reproducible evidence.  </li>
+<li><strong>Single PDF</strong> narrative: <strong>bugs first</strong>; <strong>innovations second</strong> (optional but included here).</li>
+</ul>
+<h3>3.3 Scope</h3>
+<p>Authenticated admin flows for one test chama (<strong>LESOM Dynamics</strong>, group id used in routes: <code>69e22c983e9a7937fd3ca493</code>). Phases: P0 compliance → P1 journeys → P2 validation/modals → P3 safe stress (no DoS, no harmful production testing per PDF §5).</p>
+<p>Supporting repo docs: <code>docs/QA_MASTER_TEST_PLAN.md</code>, <code>docs/QA_EXECUTION_REPORT.md</code>, <code>Hackathon-Info-Session-transcripts</code>.</p>
+<hr>
+<h2>4. Testing environment &amp; methodology</h2>
+<h3>4.1 Environment (actual machine used for this submission)</h3>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Device</strong></td>
+<td>Windows desktop PC (64-bit), suitable for concurrent browser + IDE</td>
+</tr>
+<tr>
+<td><strong>OS</strong></td>
+<td><strong>Windows 10 / 11</strong> — build <strong>10.0.26200</strong> (win32) on the test machine</td>
+</tr>
+<tr>
+<td><strong>Browser</strong></td>
+<td><strong>Google Chrome</strong> (stable channel) for manual exploratory testing. <strong>Cursor IDE embedded browser</strong> (Chromium-based automation) used for reproducible navigation, snapshots, and screenshot capture.</td>
+</tr>
+<tr>
+<td><strong>Network</strong></td>
+<td><strong>Wi‑Fi</strong> (residential/office), no intentional throttling</td>
+</tr>
+<tr>
+<td><strong>Target</strong></td>
+<td><strong><a href="https://www.chamaconnect.io/">https://www.chamaconnect.io/</a></strong></td>
+</tr>
+<tr>
+<td><strong>Account</strong></td>
+<td>Individual ChamaConnect account; <strong>ChamaAdmin</strong> on test group <strong>LESOM Dynamics</strong></td>
+</tr>
+</tbody></table>
+<h3>4.2 Methodology</h3>
+<ul>
+<li>Systematic module coverage (sidebar + direct URLs).  </li>
+<li>Negative tests (empty submits, modal cancel/submit cycles).  </li>
+<li><strong>Phase 3:</strong> rapid route changes, repeated theme toggle, modal open/close loops; sampled <strong>Network</strong> (no <code>5xx</code> in sample); noted RSC notification <strong>chatter</strong>.  </li>
+<li>Evidence: <strong><code>Evidence_Files/</code></strong> — e.g. <code>20260425-1732-09.1854228.mp4</code>, <code>QA-01</code>–<code>QA-13</code>, <code>QA-BUG-01-*</code>, <code>QA-P2-*</code>.</li>
+</ul>
+<hr>
+<h2>5. Bugs &amp; issues identified (primary section)</h2>
+<h3>5.0 Severity summary</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Title (short)</th>
+<th>Severity</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CCQA-003</td>
+<td>Duplicate write requests on stressed Save</td>
+<td><strong>S1 Critical</strong></td>
+</tr>
+<tr>
+<td>CCQA-001</td>
+<td>Login route mismatch and auth-link inconsistency</td>
+<td><strong>S2 High</strong></td>
+</tr>
+<tr>
+<td>CCQA-002</td>
+<td>Click interception blocks tab navigation in chama detail</td>
+<td><strong>S2 High</strong></td>
+</tr>
+<tr>
+<td>CCQA-004</td>
+<td>Critical modal actions unreachable in constrained viewport</td>
+<td><strong>S2 High</strong></td>
+</tr>
+<tr>
+<td>CCQA-010</td>
+<td>Modal overlay / scroll required for primary actions</td>
+<td><strong>S3 Medium</strong></td>
+</tr>
+<tr>
+<td>CCQA-005</td>
+<td>Loan submission lacks clear required-field feedback</td>
+<td><strong>S3 Medium</strong></td>
+</tr>
+<tr>
+<td>CCQA-006</td>
+<td>Fine submission validation feedback weak / non-visible</td>
+<td><strong>S3 Medium</strong></td>
+</tr>
+<tr>
+<td>CCQA-007</td>
+<td>Viewport-dependent nav operability issues</td>
+<td><strong>S3 Medium</strong></td>
+</tr>
+<tr>
+<td>CCQA-008</td>
+<td>Chart runtime error in dashboard</td>
+<td><strong>S3 Medium</strong></td>
+</tr>
+<tr>
+<td>CCQA-009</td>
+<td>Excessive production logging noise</td>
+<td><strong>S4 Low</strong></td>
+</tr>
+</tbody></table>
+<p><strong>Evidence mapping:</strong> See <code>Evidence_Files/</code> PNGs and MP4; filenames referenced in <code>docs/QA_EXECUTION_REPORT.md</code>.</p>
+<hr>
+<h3>[CCQA-001] Login route mismatch and auth-link inconsistency</h3>
+<ul>
+<li><strong>Severity:</strong> <code>S2 High</code> | <strong>Impact weight:</strong> <code>W3 High</code>  </li>
+<li><strong>Area:</strong> Auth routing  </li>
+<li><strong>Routes:</strong> <code>/login</code> (404); links from <code>/register</code> and <code>/auth/verify</code>  </li>
+<li><strong>Steps to reproduce:</strong>  <ol>
+<li>Navigate to <code>/login</code>.  </li>
+<li>Observe 404 page.  </li>
+<li>From <code>/register</code> or <code>/auth/verify</code>, click login/back-to-login controls.  </li>
+<li>Observe inconsistent or delayed/non-functional route behavior.</li>
+</ol>
+</li>
+<li><strong>Actual:</strong> Canonical login appears to be <code>/get-started</code>, while <code>/login</code> is dead. Some login links fail to route predictably.  </li>
+<li><strong>Expected:</strong> All login-related links route consistently to one valid login path.  </li>
+<li><strong>Business impact:</strong> Users can fail to authenticate or lose trust before onboarding.  </li>
+<li><strong>Recommended fix:</strong> Define one canonical login route and enforce via central route constants; add link integrity tests for all auth surfaces.  </li>
+<li><strong>Screenshots / video:</strong> Attach 404 capture + working <code>/get-started</code> path; session recording in <code>Evidence_Files/*.mp4</code>.</li>
+</ul>
+<hr>
+<h3>[CCQA-002] Click interception blocks tab navigation in chama detail</h3>
+<ul>
+<li><strong>Severity:</strong> <code>S2 High</code> | <strong>Impact weight:</strong> <code>W3 High</code>  </li>
+<li><strong>Area:</strong> Chama detail navigation  </li>
+<li><strong>Steps to reproduce:</strong>  <ol>
+<li>Open chama detail page.  </li>
+<li>Attempt to click top tab links (e.g., Members/Overview) during specific viewport/layout states.  </li>
+<li>Observe click intercepted by footer/layer.</li>
+</ol>
+</li>
+<li><strong>Actual:</strong> Clicks intermittently fail with “click target intercepted” by footer region.  </li>
+<li><strong>Expected:</strong> Tab links consistently clickable.  </li>
+<li><strong>Business impact:</strong> Core record-management workflows become unreliable.  </li>
+<li><strong>Recommended fix:</strong> Audit z-index/stacking contexts and fixed footer overlap; add UI tests for clickable nav across breakpoints.</li>
+</ul>
+<hr>
+<h3>[CCQA-003] Duplicate write requests on stressed Save actions</h3>
+<ul>
+<li><strong>Severity:</strong> <code>S1 Critical</code> | <strong>Impact weight:</strong> <code>W3 High</code>  </li>
+<li><strong>Areas:</strong> Chama settings save; Share config save  </li>
+<li><strong>Steps to reproduce:</strong>  <ol>
+<li>Open settings or shares config.  </li>
+<li>Double-click save action quickly.  </li>
+<li>Inspect network calls.</li>
+</ol>
+</li>
+<li><strong>Actual:</strong> Duplicate <code>PATCH</code> requests fired to same endpoint (both <code>200</code>).  </li>
+<li><strong>Expected:</strong> One user intent ⇒ one write request (or server-side idempotent handling).  </li>
+<li><strong>Business impact:</strong> High risk of duplicate updates/race conditions in financial config state.  </li>
+<li><strong>Recommended fix:</strong> Client-side submit lock/debounce; server-side idempotency key or duplicate-request guard.  </li>
+<li><strong>Evidence:</strong> Export HAR from DevTools when reproducing; cite in PDF.</li>
+</ul>
+<hr>
+<h3>[CCQA-004] Critical modal actions unreachable in constrained viewport</h3>
+<ul>
+<li><strong>Severity:</strong> <code>S2 High</code> | <strong>Impact weight:</strong> <code>W3 High</code>  </li>
+<li><strong>Area:</strong> Goals modal and other vertical forms  </li>
+<li><strong>Steps to reproduce:</strong>  <ol>
+<li>Open create-goal modal in constrained viewport state.  </li>
+<li>Attempt to click Create/Close.  </li>
+<li>Observe controls offscreen and not recoverable by normal scroll.</li>
+</ol>
+</li>
+<li><strong>Actual:</strong> Action buttons can become unreachable; users may be trapped in modal.  </li>
+<li><strong>Expected:</strong> Modal actions always reachable (sticky footer/actions or scrollable body).  </li>
+<li><strong>Business impact:</strong> Users blocked from completing or exiting critical operations.  </li>
+<li><strong>Recommended fix:</strong> Responsive modal redesign with fixed action bar; keyboard escape and focus-trap tested at small heights.  </li>
+<li><strong>Evidence:</strong> <code>Evidence_Files/QA-P2-04-Goals-modal-short-viewport.png</code> (and updated goals modal captures as applicable).</li>
+</ul>
+<hr>
+<h3>[CCQA-005] Loan submission lacks clear required-field feedback</h3>
+<ul>
+<li><strong>Severity:</strong> <code>S3 Medium</code> | <strong>Impact weight:</strong> <code>W2 Medium</code>  </li>
+<li><strong>Area:</strong> Loans → Apply Loan  </li>
+<li><strong>Steps to reproduce:</strong>  <ol>
+<li>Open apply-loan modal.  </li>
+<li>Submit without valid purpose/amount.  </li>
+<li>Observe no clear inline error guidance.</li>
+</ol>
+</li>
+<li><strong>Actual:</strong> Submission can fail silently or without clear, specific validation feedback.  </li>
+<li><strong>Expected:</strong> Explicit field-level errors and actionable message.  </li>
+<li><strong>Business impact:</strong> Reduced completion and user confusion in credit flow.  </li>
+<li><strong>Recommended fix:</strong> Enforce schema validation and per-field messaging.  </li>
+<li><strong>Evidence:</strong> <code>Evidence_Files/QA-P2-02-Loan-empty-submit-attempt.png</code>; full flow on MP4.</li>
+</ul>
+<hr>
+<h3>[CCQA-006] Fine submission validation feedback is weak/non-visible</h3>
+<ul>
+<li><strong>Severity:</strong> <code>S3 Medium</code> | <strong>Impact weight:</strong> <code>W2 Medium</code>  </li>
+<li><strong>Area:</strong> Fines → Add Fine  </li>
+<li><strong>Steps to reproduce:</strong>  <ol>
+<li>Open add-fine form.  </li>
+<li>Submit empty required fields.  </li>
+<li>Observe minimal/no explicit feedback.</li>
+</ol>
+</li>
+<li><strong>Actual:</strong> Required fields exist, but feedback is not sufficiently explicit for users (often relies on browser-native validation).  </li>
+<li><strong>Expected:</strong> Visible, field-specific required messages before submit.  </li>
+<li><strong>Business impact:</strong> Inconsistent enforcement and lower trust in governance workflows.  </li>
+<li><strong>Recommended fix:</strong> Add clear validation text and focused error handling.  </li>
+<li><strong>Evidence:</strong> <code>Evidence_Files/QA-P2-03-Fine-empty-submit-html5.png</code>, <code>QA-P2-03b-Fines-add-modal.png</code>.</li>
+</ul>
+<hr>
+<h3>[CCQA-007] Viewport-dependent nav operability issues</h3>
+<ul>
+<li><strong>Severity:</strong> <code>S3 Medium</code> | <strong>Impact weight:</strong> <code>W2 Medium</code>  </li>
+<li><strong>Area:</strong> Sidebar links  </li>
+<li><strong>Steps to reproduce:</strong>  <ol>
+<li>Open sidebar in constrained viewport.  </li>
+<li>Click lower links (e.g., Loans/Fines/Goals).  </li>
+<li>Observe repeated failure to bring element into clickable view.</li>
+</ol>
+</li>
+<li><strong>Actual:</strong> Lower nav items become intermittently unreachable.  </li>
+<li><strong>Expected:</strong> Sidebar allows reliable scroll and click across all entries.  </li>
+<li><strong>Business impact:</strong> Users cannot consistently access full module set.  </li>
+<li><strong>Recommended fix:</strong> Make sidebar independently scrollable with persistent pointer access.</li>
+</ul>
+<hr>
+<h3>[CCQA-008] Chart runtime error in dashboard</h3>
+<ul>
+<li><strong>Severity:</strong> <code>S3 Medium</code> | <strong>Impact weight:</strong> <code>W2 Medium</code>  </li>
+<li><strong>Area:</strong> Dashboard charts  </li>
+<li><strong>Actual telemetry:</strong> Console error indicates chart width/height computed as invalid (<code>-1</code>).  </li>
+<li><strong>Expected:</strong> Chart containers always resolve valid dimensions.  </li>
+<li><strong>Business impact:</strong> Unstable analytics visuals; potential blank/broken charts.  </li>
+<li><strong>Recommended fix:</strong> Enforce min dimensions and safe chart rendering guards.</li>
+</ul>
+<hr>
+<h3>[CCQA-009] Excessive production logging noise</h3>
+<ul>
+<li><strong>Severity:</strong> <code>S4 Low</code> | <strong>Impact weight:</strong> <code>W1 Low</code>  </li>
+<li><strong>Area:</strong> Client runtime  </li>
+<li><strong>Actual telemetry:</strong> Repeated token and object debug logs in production context.  </li>
+<li><strong>Expected:</strong> Sensitive/noisy debug logs gated behind non-production flags.  </li>
+<li><strong>Business impact:</strong> Harder incident diagnosis, unnecessary console noise.  </li>
+<li><strong>Recommended fix:</strong> Strip or gate verbose logs in production builds.</li>
+</ul>
+<hr>
+<h3>[CCQA-010] Modal full-screen overlay intercepts clicks until user scrolls primary actions into view</h3>
+<ul>
+<li><strong>Severity:</strong> <code>S3 Medium</code> | <strong>Impact weight:</strong> <code>W2 Medium</code> (elevate to <code>S2</code> if reproduced without workaround on common devices)  </li>
+<li><strong>Area:</strong> Financial modals (Contributions, Loans, Fines, Goals patterns)  </li>
+<li><strong>Steps to reproduce:</strong>  <ol>
+<li>Open a modal with a scrollable body (e.g., <strong>Record Contribution</strong>).  </li>
+<li>Attempt <strong>Submit</strong> or <strong>Cancel</strong> without scrolling.  </li>
+<li>Observe click interception or no-op until <code>scrollIntoView</code> / manual scroll exposes the control.</li>
+</ol>
+</li>
+<li><strong>Actual:</strong> Automation and manual-equivalent clicks can hit a <code>fixed inset-0</code> layer or miss stacked controls; <strong>scrollIntoView</strong> on the target button makes <strong>Submit</strong> / <strong>Cancel</strong> reliable. Empty-submit validation on <strong>Make Contribution</strong> is <strong>visible and correct</strong> once <strong>Submit</strong> is reachable.  </li>
+<li><strong>Expected:</strong> Primary actions always visible (sticky footer) or modal body scrolls automatically to focused invalid field + actions.  </li>
+<li><strong>Business impact:</strong> Users may think the app is frozen; increases failed submissions and support burden.  </li>
+<li><strong>Recommended fix:</strong> Sticky modal action bar; auto-scroll to first invalid field on submit; reduce overlay hit-target conflicts.  </li>
+<li><strong>Evidence:</strong> <code>Evidence_Files/QA-BUG-01-Contribution-submit-click-intercepted.png</code>, <code>QA-P2-01-Contribution-empty-validation.png</code>.</li>
+</ul>
+<hr>
+<h2>6. Innovation &amp; feature proposals (Section 2)</h2>
+<p>This section complements the bug bounty by proposing <strong>high-impact FinTech</strong> upgrades. Several items are <strong>grounded in the companion “ChamaConnect 2.0” codebase</strong> at <strong><code>Chama-Connect-2-point-o</code></strong> (React/Vite admin, typed domain, Express LLM routes — see that repo’s <code>README.md</code>, <code>HACKATHON_PROPOSAL.md</code>, and <code>docs/TECHNICAL_PROPOSAL.md</code>). They are <strong>design references</strong> for the production platform, not claims of deployed code on chamaconnect.io.</p>
+<h3>6.1 ICDMS-style <strong>Cases</strong> module + grounded <strong>AI case suggest</strong></h3>
+<p><strong>Problem:</strong> Fines/appeals and disputes lack a first-class <strong>case</strong> record (status, timeline, assignee, evidence).<br><strong>Proposal (from 2.0):</strong> Case list/detail UI, reducer-driven transitions, <strong><code>POST /api/llm/case-suggest</code></strong> suggestions constrained by <strong>group rules</strong> snippets — reduces “AI hallucination risk” on money matters.<br><strong>Impact:</strong> Direct <strong>ICDMS optimization</strong> track; better <strong>traceability</strong> for governance.<br><strong>Approach:</strong> Domain <code>Case</code> model, API + audit on transition; LLM prompt includes only structured facts + policy excerpts.</p>
+<h3>6.2 <strong>Chama AI Advisor</strong> (CopilotKit) with optional <strong>safe tools</strong></h3>
+<p><strong>Problem:</strong> Treasurers need fast answers tied to <strong>their</strong> group data, not generic chat.<br><strong>Proposal (from 2.0):</strong> Sidebar copilot with <strong>grounded context</strong> (members, balances, open cases); optional <strong>frontend tools</strong> (e.g. record contribution, run penalty evaluation, <strong>simulate</strong> M-Pesa) that mutate state through the same reducer as the UI.<br><strong>Impact:</strong> Usability + operational speed; clear path to <strong>human-in-the-loop</strong> automation.<br><strong>Approach:</strong> CopilotKit + Zod tool params; rate-limit and confirm destructive tools in production.</p>
+<h3>6.3 <strong>Audit trail</strong> (<code>pushAudit</code>) for sensitive mutations</h3>
+<p><strong>Problem:</strong> CCQA-003 shows config writes can duplicate/race — operators need <strong>who changed what, when</strong>.<br><strong>Proposal (from 2.0):</strong> Append-style <strong>audit log</strong> on reducer actions (settings, shares, fines, case status); Settings <strong>Audit</strong> tab for treasurers.<br><strong>Impact:</strong> <strong>Automated records</strong>, dispute resolution, aligns with <strong>fraud / accountability</strong> narrative.<br><strong>Approach:</strong> Immutable audit events table (when backend exists); client-first log for demo parity.</p>
+<h3>6.4 <strong>Penalty / fine rules engine</strong> (configurable, repeatable)</h3>
+<p><strong>Problem:</strong> Fines feel ad hoc if not tied to published rules (CCQA-006).<br><strong>Proposal (from 2.0):</strong> Versioned <strong>fine rules</strong> in domain; deterministic evaluation (e.g. late contribution) with explainable output before posting.<br><strong>Impact:</strong> Fairness, predictability, fewer disputes.<br><strong>Approach:</strong> Rule schema in DB; unit tests for edge dates and partial payments.</p>
+<h3>6.5 <strong>M-Pesa narrative</strong>: simulation → STK → reconciliation queue</h3>
+<p><strong>Problem:</strong> Kenyan chamas run on M-Pesa; product must show a <strong>credible</strong> path from UX to production integration.<br><strong>Proposal (from 2.0):</strong> Simulation + matching helpers today; <strong>Daraja</strong> STK push + signed callbacks + treasurer <strong>reconciliation queue</strong> as phased delivery (per <code>TECHNICAL_PROPOSAL.md</code> roadmap).<br><strong>Impact:</strong> <strong>FinTech credibility</strong>; reduces treasurer spreadsheet drift.</p>
+<h3>6.6 <strong>Dashboard LLM monthly summary</strong> (grounded narrative)</h3>
+<p><strong>Proposal (from 2.0):</strong> <code>POST /api/llm/monthly-summary</code> produces a <strong>short narrative</strong> from structured aggregates (not raw PII dumps).<br><strong>Impact:</strong> Faster board meetings; <strong>performance</strong> of comprehension vs raw tables.</p>
+<h3>6.7 <strong>Governance artifacts</strong> in Settings (constitution + proposal PDF hooks)</h3>
+<p><strong>Proposal (from 2.0):</strong> File pickers / metadata for <strong>constitution</strong> and <strong>technical proposal</strong> (filename-only in demo; real storage in prod).<br><strong>Impact:</strong> Aligns group <strong>policy</strong> with software behavior and <strong>ICDMS</strong> evidence practices.</p>
+<h3>6.8 <strong>Config write integrity</strong> (closes CCQA-003 loop)</h3>
+<p><strong>Proposal:</strong> Idempotent <strong><code>PATCH</code></strong> with <strong>ETag</strong>/version; <strong>single-flight</strong> client lock; server <strong>dedupe</strong> window.<br><strong>Impact:</strong> Protects <strong>financial config</strong> integrity — highest ROI fix paired with audit (6.3).</p>
+<hr>
+<h2>7. Expected impact</h2>
+<p>This submission gives ChamaConnect a <strong>prioritized, evidence-backed defect backlog</strong> focused on <strong>financial correctness, navigation reliability, and governance UX</strong>, plus <strong>concrete engineering and product proposals</strong> (including <strong>ChamaConnect 2.0</strong>-sourced innovations) aligned with <strong>SACCO/chama</strong> operations and organizer criteria: <strong>technical depth</strong>, <strong>clarity</strong>, and <strong>impact</strong>. The public GitHub repo, <strong>screen recording</strong>, and structured reports make findings <strong>reproducible</strong> and <strong>low cost to verify</strong>.</p>
+<hr>
+<h2>8. Repository &amp; evidence index</h2>
+<table>
+<thead>
+<tr>
+<th>Path</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>docs/QA_EXECUTION_REPORT.md</code></td>
+<td><strong>Chama Connect QA/Bug Bounty #1</strong> — full log, Phase 2–3, risks, sprint order</td>
+</tr>
+<tr>
+<td><code>docs/QA_MASTER_TEST_PLAN.md</code></td>
+<td><strong>Chama Connect QA/Bug Bounty #1</strong> — phased methodology</td>
+</tr>
+<tr>
+<td><code>docs/SUBMISSION_PDF_OUTLINE.md</code></td>
+<td>Short outline</td>
+</tr>
+<tr>
+<td><code>Evidence_Files/*.mp4</code></td>
+<td>Full session recording</td>
+</tr>
+<tr>
+<td><code>Evidence_Files/QA-*.png</code></td>
+<td>Screenshots</td>
+</tr>
+<tr>
+<td><code>HACKATHON_PROPOSAL.md</code></td>
+<td>GitHub-facing stub</td>
+</tr>
+<tr>
+<td><code>Hackathon-Info-Session-transcripts</code></td>
+<td>Organizer session notes</td>
+</tr>
+</tbody></table>
+<p><strong>Support (transcript):</strong> verify official support email in organizer comms (transcript mentions <code>support@temaconnect.io</code> — may be transcription error).</p>
+
+  </body>
+</html>

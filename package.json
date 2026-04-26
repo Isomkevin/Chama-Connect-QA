@@ -3,9 +3,13 @@
   "private": true,
   "description": "Chama Connect QA/Bug Bounty #1 — optional tooling to export docs/SUBMISSION_COMPLETE_FOR_PDF.md to PDF",
   "scripts": {
-    "pdf": "md-to-pdf docs/SUBMISSION_COMPLETE_FOR_PDF.md"
+    "pdf": "md-to-pdf docs/SUBMISSION_COMPLETE_FOR_PDF.md",
+    "pdf:html": "node scripts/build-submission-html.js",
+    "pdf:edge": "node scripts/print-pdf.js",
+    "pdf:build": "npm run pdf:html && npm run pdf:edge"
   },
   "devDependencies": {
+    "marked": "^18.0.2",
     "md-to-pdf": "^5.2.4"
   }
 }

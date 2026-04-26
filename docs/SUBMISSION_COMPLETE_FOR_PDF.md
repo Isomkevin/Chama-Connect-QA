@@ -8,7 +8,7 @@ pdf_options:
 
 # Chama Connect QA/Bug Bounty #1
 
-**Complete document for PDF export** (`npx md-to-pdf docs/SUBMISSION_COMPLETE_FOR_PDF.md`). Fill bracketed fields on the cover before submitting.
+**Complete document for PDF export.** Use `npm run pdf:build` (HTML + Edge) or `npx md-to-pdf docs/SUBMISSION_COMPLETE_FOR_PDF.md`; see `HACKATHON_PROPOSAL.md`.
 
 ---
 
@@ -17,12 +17,12 @@ pdf_options:
 | Field | Content |
 |--------|---------|
 | **Title** | Chama Connect QA/Bug Bounty #1 |
-| **Participant** | **[Your full legal name]** |
-| **Email** | **[Your email]** |
+| **Participant** | Kevin Boaz Isom |
+| **Email** | kevinisom9000@gmail.com |
 | **Event** | ChamaConnect Virtual Hackathon (bug bounty / pre-launch feedback) |
-| **Date** | **[Submission date/time, timezone]** |
-| **Repository** | **[Public GitHub URL of this repo]** |
-| **Companion reference build** | Local path `C:\Users\Administrator\Downloads\Chama-Connect-2-point-o` (ChamaConnect 2.0 concept) — add public URL if published |
+| **Date** | Saturday, 25 April 2026 (EAT, Africa/Nairobi) |
+| **Repository** | https://github.com/Isomkevin/Chama-Connect-QA |
+| **Companion reference build** | GitHub: [MercyMurigi/Chama-Connect-2_0](https://github.com/MercyMurigi/Chama-Connect-2_0) — demo [chama-connect-2.vercel.app](https://chama-connect-2.vercel.app/) (ChamaConnect 2.0 concept) |
 
 **Authoritative rules:** [Official Submission Terms (PDF)](ChamaConnect-Hackathon-Source-Code-Submission-Terms-and-Conditions.pdf). If the info session deadline and PDF §7 differ, **follow the PDF and latest organizer message**.
 
@@ -43,7 +43,7 @@ pdf_options:
 
 ### 3.1 Objective
 
-Exercise **ChamaConnect** on **https://www.chamaconnect.io/** as a chama/SACCO administrator: members, contributions, income, loans, expenses, fines (including appeals), goals, shares, and settings. Document defects in **GitHub-issue style**: context, environment, numbered repro steps, expected vs actual, screenshots/video, root-cause hypothesis, proposed fix.
+Exercise **ChamaConnect** on **<https://www.chamaconnect.io/>** as a chama/SACCO administrator: members, contributions, income, loans, expenses, fines (including appeals), goals, shares, and settings. Document defects in **GitHub-issue style**: context, environment, numbered repro steps, expected vs actual, screenshots/video, root-cause hypothesis, proposed fix.
 
 ### 3.2 Judging alignment (info session + PDF)
 
@@ -70,7 +70,7 @@ Supporting repo docs: `docs/QA_MASTER_TEST_PLAN.md`, `docs/QA_EXECUTION_REPORT.m
 | **OS** | **Windows 10 / 11** — build **10.0.26200** (win32) on the test machine |
 | **Browser** | **Google Chrome** (stable channel) for manual exploratory testing. **Cursor IDE embedded browser** (Chromium-based automation) used for reproducible navigation, snapshots, and screenshot capture. |
 | **Network** | **Wi‑Fi** (residential/office), no intentional throttling |
-| **Target** | **https://www.chamaconnect.io/** |
+| **Target** | **<https://www.chamaconnect.io/>** |
 | **Account** | Individual ChamaConnect account; **ChamaAdmin** on test group **LESOM Dynamics** |
 
 ### 4.2 Methodology

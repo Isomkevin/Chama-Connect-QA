@@ -6,7 +6,7 @@
 
 **Public GitHub:** Link this repository. **No secrets** in the repo.
 
-**Single PDF source (expanded):** Use **`docs/SUBMISSION_COMPLETE_FOR_PDF.md`** — it already includes **full CCQA-001–010 write-ups**, **filled §4.1 environment**, and **Innovation §6** (including **ChamaConnect 2.0** ideas). Export with `npx md-to-pdf docs/SUBMISSION_COMPLETE_FOR_PDF.md`. This file remains a shorter scaffold.
+**Single PDF source (expanded):** Use **`docs/SUBMISSION_COMPLETE_FOR_PDF.md`** — it already includes **full CCQA-001–010 write-ups**, **filled §4.1 environment**, and **Innovation §6** (including **ChamaConnect 2.0** ideas). Export with **`npm run pdf:build`** (recommended) or `npx md-to-pdf docs/SUBMISSION_COMPLETE_FOR_PDF.md`. This file remains a shorter scaffold.
 
 ---
 
@@ -15,11 +15,11 @@
 | Field | Content |
 |--------|---------|
 | **Title** | Chama Connect QA/Bug Bounty #1 |
-| **Participant** | [Your full legal name] |
-| **Email** | [Your email] |
+| **Participant** | Kevin Boaz Isom |
+| **Email** | kevinisom9000@gmail.com |
 | **Event** | ChamaConnect Virtual Hackathon (bug bounty / pre-launch feedback) |
-| **Date** | [Submission date/time, timezone] |
-| **Repository** | [Public GitHub URL] |
+| **Date** | Saturday, 25 April 2026 (EAT) |
+| **Repository** | https://github.com/Isomkevin/Chama-Connect-QA |
 
 ---
 
@@ -72,8 +72,6 @@ Full execution log: **`docs/QA_EXECUTION_REPORT.md`**. Master plan: **`docs/QA_M
 | **Network** | Wi‑Fi (residential/office) |
 | **Target** | https://www.chamaconnect.io/ |
 | **Account** | Individual test account; **ChamaAdmin** on **LESOM Dynamics** (`69e22c983e9a7937fd3ca493`) |
-
-*(Participant name / email / GitHub URL: still set on the **cover** in `SUBMISSION_COMPLETE_FOR_PDF.md`.)*
 
 ### 4.2 Methodology
 

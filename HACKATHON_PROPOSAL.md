@@ -25,18 +25,21 @@ This repository is a **competition-grade QA / bug-bounty submission** for the li
 | **Theme** | `ChamaConnect: Refactored - Scaling the Circle` |
 | **Product** | **chamaconnect.io** / **chamaconnect.co.ke** |
 | **This repo** | Live-site QA, defect backlog, reproducible evidence, proposed fixes |
-| **Companion build** | **`Chama-Connect-2-point-o`** (local path) — concept **ChamaConnect 2.0** admin + ICDMS/AI/audit ideas; innovations in the PDF reference that design where relevant |
-
-## Cover placeholders (fill before export)
-
-- **Participant name, email, public GitHub URL, submission timestamp** — replace bracketed fields at the top of **`docs/SUBMISSION_COMPLETE_FOR_PDF.md`**.
+| **Companion build** | **GitHub:** [MercyMurigi/Chama-Connect-2_0](https://github.com/MercyMurigi/Chama-Connect-2_0) · **Demo:** [chama-connect-2.vercel.app](https://chama-connect-2.vercel.app/) — **ChamaConnect 2.0** admin + ICDMS/AI/audit ideas; innovations in the PDF reference that design where relevant |
 
 ## How to generate the PDF
 
-From the repo root (requires Node / npx):
+From the repo root (Node.js required):
+
+**Recommended (reliable on Windows):** Markdown → HTML → Microsoft Edge headless print.
 
 ```bash
-npx --yes md-to-pdf docs/SUBMISSION_COMPLETE_FOR_PDF.md
+npm install
+npm run pdf:build
 ```
 
-Output defaults to **`docs/SUBMISSION_COMPLETE_FOR_PDF.pdf`**. If you use **Word / Google Docs**, paste the Markdown content from `SUBMISSION_COMPLETE_FOR_PDF.md` and export as PDF.
+This writes **`docs/SUBMISSION_COMPLETE_FOR_PDF.html`** then **`docs/SUBMISSION_COMPLETE_FOR_PDF.pdf`**. Edge must be installed (default on Windows).
+
+**Alternative:** `npm run pdf` uses **md-to-pdf** (Chromium); if it hangs or fails, use **`npm run pdf:build`** above.
+
+If you use **Word / Google Docs**, paste the Markdown from **`docs/SUBMISSION_COMPLETE_FOR_PDF.md`** and export as PDF.

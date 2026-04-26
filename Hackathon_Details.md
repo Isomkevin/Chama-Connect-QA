@@ -93,7 +93,7 @@ To align this codebase with the hackathon objective, prioritize:
 - **Submission title:** Chama Connect QA/Bug Bounty #1
 - Main project documentation: `README.md`
 - **Judge-ready PDF outline** (info session structure + bug mapping): `docs/SUBMISSION_PDF_OUTLINE.md`
-- **Single PDF Markdown source** (full bugs + environment + innovations): `docs/SUBMISSION_COMPLETE_FOR_PDF.md` — export via `npx md-to-pdf` (see `HACKATHON_PROPOSAL.md`)
+- **Single PDF Markdown source** (full bugs + environment + innovations): `docs/SUBMISSION_COMPLETE_FOR_PDF.md` — export via **`npm run pdf:build`** or `npx md-to-pdf` (see `HACKATHON_PROPOSAL.md`)
 - Proposal / judge narrative (export to PDF): `HACKATHON_PROPOSAL.md`
 - Binding submission contract + PDF index: `docs/README.md`
 - Convenience summary of PDF topics (subordinate to PDF): `REPOSITORY_TERMS.md`
